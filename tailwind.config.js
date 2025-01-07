@@ -5,7 +5,7 @@ export default {
     extend: {
       screens: {
         sm: "320px", // Custom 'sm' breakpoint
-        md: "800px", // Custom 'md' breakpoint
+        md: "550px", // Custom 'md' breakpoint
         lg: "1080px", // Custom 'lg' breakpoint
       },
     },

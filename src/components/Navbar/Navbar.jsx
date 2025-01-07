@@ -7,12 +7,17 @@ import { GiFallingStar } from "react-icons/gi";
 import { CiBellOn, CiHeadphones } from "react-icons/ci";
 import { AiOutlineStock } from "react-icons/ai";
 
-export default function Navbar() {
+const Navbar = () => {
   const [toggle, setToggle] = useState(false);
+  const [isSearchVisible, setIsSearchVisible] = useState(false);
   const menuRef = useRef(null);
 
   const handleToggle = () => {
     setToggle(!toggle);
+  };
+
+  const handleSearchToggle = () => {
+    setIsSearchVisible(!isSearchVisible);
   };
 
   useEffect(() => {
@@ -29,99 +34,121 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className="bg-blue-800 text-white p-4 lg:h-20 flex items-center sm:h-16 w-full">
-      <div className="container mx-auto flex flex-wrap items-center justify-between">
-        {/* Logo Section */}
-        <div className="flex-shrink-0 border-b-2 border-yellow-300 pb-2 sm:border-0">
-          <h1 className="flex items-center text-xl sm:text-lg lg:text-3xl font-semibold gap-2">
-            <GiFallingStar className="text-yellow-300" />
-            Electromart
-          </h1>
-        </div>
+    <nav className="bg-[#2E3192] text-white w-full">
+      <div className="px-2 sm:px-4 py-2">
+        <div className="flex items-center justify-around">
+          {/* Logo Section */}
+          <div className="flex-shrink-0">
+            <h1 className="flex items-center text-lg sm:text-xl font-semibold gap-1">
+              <GiFallingStar className="text-yellow-300 h-5 w-5" />
+              <span className="inline md:text-2xl sm:text-base">
+                Electromart
+              </span>
+            </h1>
+          </div>
 
-        {/* Search Bar */}
-        <div className="flex-1 max-w-lg w-full mt-4 sm:mt-0 sm:mx-4">
-          <form onSubmit={(e) => e.preventDefault()} className="relative">
-            <input
-              type="text"
-              placeholder="Search for Products and Brands"
-              className="w-full py-2 px-4 pr-12 text-black rounded-md outline-none text-sm sm:text-base"
-              aria-label="Search for products and brands"
-            />
-            <button
-              type="submit"
-              className="absolute right-0 top-0 h-full px-4 bg-slate-200 hover:bg-slate-300 text-blue-800 rounded-r-md"
-            >
+          {/* Search Bar - Only visible on larger screens */}
+          <div className={`hidden md:block flex-1 max-w-2xl px-4`}>
+            <form onSubmit={(e) => e.preventDefault()} className="relative">
+              <input
+                type="text"
+                placeholder="Search for Products and Brands"
+                className="w-full py-1.5 px-4 pr-12 text-gray-700 bg-white rounded-md outline-none text-sm"
+              />
+              <button
+                type="submit"
+                className="absolute right-0 top-0 h-full px-3 text-gray-600 hover:text-gray-800"
+              >
+                <IoSearchSharp className="h-4 w-4" />
+              </button>
+            </form>
+          </div>
+
+          {/* Mobile Search Overlay */}
+          {isSearchVisible && (
+            <div className="fixed inset-0 bg-[#2E3192] z-50 p-4">
+              <div className="flex items-center gap-2">
+                <button onClick={handleSearchToggle} className="p-2">
+                  ←
+                </button>
+                <input
+                  type="text"
+                  placeholder="Search for Products and Brands"
+                  className="w-full py-1.5 px-4 text-gray-700 bg-white rounded-md outline-none text-sm"
+                  autoFocus
+                />
+              </div>
+            </div>
+          )}
+
+          {/* Action Items */}
+          <div className="flex items-center gap-1 sm:gap-2">
+            {/* Search toggle for mobile */}
+            <button className="md:hidden p-2" onClick={handleSearchToggle}>
               <IoSearchSharp className="h-5 w-5" />
-              <span className="sr-only">Search</span>
             </button>
-          </form>
-        </div>
 
-        {/* Action Items */}
-        <ul className="flex items-center space-x-4 sm:space-x-2 mt-4 sm:mt-0 text-sm sm:text-base lg:text-lg">
-          <li>
-            <button className="flex items-center px-4 py-2 bg-white text-blue-800 hover:bg-white/90 rounded-md font-medium">
-              <CgProfile className="mr-2 h-5 w-5" />
+            {/* Cart */}
+            <button className="p-2 flex items-center">
+              <FaOpencart className="h-5 w-5" />
+              <span className="hidden md:inline ml-2">Cart</span>
+            </button>
+            <button className="hover:bg-gray-50 w-full p-2.5 text-start flex gap-2 items-center  sm:hidden md:flex">
+              <CgProfile className="w-5 h-5" />
               Login
             </button>
-          </li>
-          <li>
-            <button className="flex items-center px-4 py-2 bg-transparent text-white hover:bg-white/20 rounded-md font-medium">
-              <FaOpencart className="mr-2 h-5 w-5" />
-              Cart
-            </button>
-          </li>
-          <li className="hidden lg:block">
-            <button className="px-4 py-2 text-white hover:bg-white/20 rounded-md font-medium">
-              Become a Seller
-            </button>
-          </li>
 
-          {/* Dropdown Menu */}
-          <li className="relative" ref={menuRef}>
-            <button
-              className="p-3 text-white hover:bg-white/20 rounded-lg"
-              onClick={handleToggle}
-            >
-              <BsThreeDotsVertical className="h-5 w-5" />
-              <span className="sr-only">More options</span>
-            </button>
-            <ul
-              className={`absolute w-64 z-50 ${
-                toggle
-                  ? "translate-y-1 opacity-100"
-                  : "-translate-y-2 opacity-0"
-              } right-0 top-12 border transition-all duration-150 ease-linear bg-white shadow-xl rounded-lg border-black py-4`}
-            >
-              <li>
-                <button className="hover:bg-slate-100 w-full p-2 text-start flex gap-2 items-center">
-                  <CiBellOn className="w-6 h-6" />
-                  Notifications Preferences
-                </button>
-              </li>
-              <li>
-                <button className="hover:bg-slate-100 w-full p-2 text-start flex gap-2 items-center">
-                  <CiHeadphones className="w-6 h-6" />
-                  24X7 Customer Care
-                </button>
-              </li>
-              <li>
-                <button className="hover:bg-slate-100 w-full p-2 text-start flex gap-2 items-center">
-                  <AiOutlineStock className="w-6 h-6" />
-                  Advertise
-                </button>
-              </li>
-              <li className="lg:hidden">
-                <button className="hover:bg-slate-100 w-full p-2 flex items-center gap-2">
-                  <span>?</span>
-                  <span>Become a Seller</span>
-                </button>
-              </li>
-            </ul>
-          </li>
-        </ul>
+            {/* Dropdown Menu */}
+            <div className="relative" ref={menuRef}>
+              <button className="p-2" onClick={handleToggle}>
+                <BsThreeDotsVertical className="h-5 w-5" />
+              </button>
+
+              {/* Dropdown Content */}
+              <ul
+                className={`absolute w-56 sm:w-64 z-50 ${
+                  toggle
+                    ? "translate-y-0 opacity-100 visible"
+                    : "-translate-y-2 opacity-0 invisible"
+                } right-0 top-12 transition-all duration-150 ease-linear bg-white text-gray-700 shadow-xl rounded-lg py-2`}
+              >
+                <li className="md:hidden">
+                  <button className="hover:bg-gray-50 w-full p-2.5 text-start flex gap-2 items-center">
+                    <CgProfile className="w-5 h-5" />
+                    Login
+                  </button>
+                </li>
+                <li>
+                  <button className="hover:bg-gray-50 w-full p-2.5 text-start flex gap-2 items-center">
+                    <CiBellOn className="w-5 h-5" />
+                    Notifications
+                  </button>
+                </li>
+                <li>
+                  <button className="hover:bg-gray-50 w-full p-2.5 text-start flex gap-2 items-center">
+                    <CiHeadphones className="w-5 h-5" />
+                    Customer Care
+                  </button>
+                </li>
+                <li>
+                  <button className="hover:bg-gray-50 w-full p-2.5 text-start flex gap-2 items-center">
+                    <AiOutlineStock className="w-5 h-5" />
+                    Advertise
+                  </button>
+                </li>
+                <li>
+                  <button className="hover:bg-gray-50 w-full p-2.5 text-start flex gap-2 items-center">
+                    <span>?</span>
+                    Become a Seller
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </nav>
   );
-}
+};
+
+export default Navbar;
