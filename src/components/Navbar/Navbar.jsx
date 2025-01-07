@@ -34,7 +34,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="bg-[#2E3192] text-white w-full">
+    <nav className="bg-[#324dae] text-white w-full">
       <div className="px-2 sm:px-4 py-2">
         <div className="flex items-center justify-around">
           {/* Logo Section */}
@@ -82,21 +82,24 @@ const Navbar = () => {
           )}
 
           {/* Action Items */}
-          <div className="flex items-center gap-1 sm:gap-2">
+          <div className="flex items-center  gap-1 sm:gap-2">
             {/* Search toggle for mobile */}
             <button className="md:hidden p-2" onClick={handleSearchToggle}>
               <IoSearchSharp className="h-5 w-5" />
             </button>
 
             {/* Cart */}
-            <button className="p-2 flex items-center">
-              <FaOpencart className="h-5 w-5" />
-              <span className="hidden md:inline ml-2">Cart</span>
-            </button>
-            <button className="hover:bg-gray-50 w-full p-2.5 text-start flex gap-2 items-center  sm:hidden md:flex">
-              <CgProfile className="w-5 h-5" />
-              Login
-            </button>
+            <div className="flex lg:-ml-12 sm:ml-0">
+              {" "}
+              <button className="p-2 flex items-center hover:bg-white/[0.3] rounded-lg">
+                <FaOpencart className="h-5 w-5" />
+                <span className="hidden md:inline ml-2">Cart</span>
+              </button>
+              <button className="hover:bg-white/[0.3] w-full p-2.5 text-start flex gap-2 items-center  rounded-lg sm:hidden md:flex">
+                <CgProfile className="w-5 h-5" />
+                Login
+              </button>
+            </div>
 
             {/* Dropdown Menu */}
             <div className="relative" ref={menuRef}>
