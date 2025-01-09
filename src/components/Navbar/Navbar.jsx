@@ -37,7 +37,6 @@ const Navbar = () => {
     <nav className="bg-[#324dae] text-white w-full">
       <div className="px-2 sm:px-4 py-2">
         <div className="flex items-center justify-around">
-          {/* Logo Section */}
           <div className="flex-shrink-0">
             <h1 className="flex items-center text-lg sm:text-xl font-semibold gap-1">
               <GiFallingStar className="text-yellow-300 h-5 w-5" />
@@ -47,7 +46,6 @@ const Navbar = () => {
             </h1>
           </div>
 
-          {/* Search Bar - Only visible on larger screens */}
           <div className={`hidden md:block flex-1 max-w-2xl px-4`}>
             <form onSubmit={(e) => e.preventDefault()} className="relative">
               <input
@@ -64,7 +62,6 @@ const Navbar = () => {
             </form>
           </div>
 
-          {/* Mobile Search Overlay */}
           {isSearchVisible && (
             <div className="fixed inset-0 bg-[#2E3192] z-50 p-4">
               <div className="flex items-center gap-2">
@@ -81,15 +78,12 @@ const Navbar = () => {
             </div>
           )}
 
-          {/* Action Items */}
           <div className="flex items-center  gap-1 sm:gap-2">
-            {/* Search toggle for mobile */}
             <button className="md:hidden p-2" onClick={handleSearchToggle}>
               <IoSearchSharp className="h-5 w-5" />
             </button>
 
-            {/* Cart */}
-            <div className="flex lg:-ml-12 sm:ml-0">
+            <div className="flex lg:-ml-16 sm:ml-0">
               {" "}
               <button className="p-2 flex items-center hover:bg-white/[0.3] rounded-lg">
                 <FaOpencart className="h-5 w-5" />
@@ -101,13 +95,11 @@ const Navbar = () => {
               </button>
             </div>
 
-            {/* Dropdown Menu */}
             <div className="relative" ref={menuRef}>
               <button className="p-2" onClick={handleToggle}>
                 <BsThreeDotsVertical className="h-5 w-5" />
               </button>
 
-              {/* Dropdown Content */}
               <ul
                 className={`absolute w-56 sm:w-64 z-50 ${
                   toggle
