@@ -67,7 +67,7 @@ function Dashboard() {
   return (
     <>
       {" "}
-      <section className="relative h-[50vh]  overflow-hidden shadow-xl sm:w-[100%]">
+      <section className="relative h-[50vh]  overflow-hidden shadow-md sm:w-[100%]">
         <div
           className="flex h-full w-full transition-transform   duration-500 ease-out"
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}

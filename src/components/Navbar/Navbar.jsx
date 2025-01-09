@@ -6,6 +6,7 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 import { GiFallingStar } from "react-icons/gi";
 import { CiBellOn, CiHeadphones } from "react-icons/ci";
 import { AiOutlineStock } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
@@ -37,14 +38,16 @@ const Navbar = () => {
     <nav className="bg-[#324dae] text-white w-full">
       <div className="px-2 sm:px-4 py-2">
         <div className="flex items-center justify-around">
-          <div className="flex-shrink-0">
-            <h1 className="flex items-center text-lg sm:text-xl font-semibold gap-1">
-              <GiFallingStar className="text-yellow-300 h-5 w-5" />
-              <span className="inline md:text-2xl sm:text-base">
-                Electromart
-              </span>
-            </h1>
-          </div>
+          <Link to={"/"}>
+            <div className="flex-shrink-0">
+              <h1 className="flex items-center text-lg sm:text-xl font-semibold gap-1">
+                <GiFallingStar className="text-yellow-300 h-5 w-5" />
+                <span className="inline md:text-2xl sm:text-base">
+                  Electromart
+                </span>
+              </h1>
+            </div>
+          </Link>
 
           <div className={`hidden md:block flex-1 max-w-2xl px-4`}>
             <form onSubmit={(e) => e.preventDefault()} className="relative">
