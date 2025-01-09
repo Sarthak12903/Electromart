@@ -1,16 +1,14 @@
 import { FaStar } from "react-icons/fa";
 import { MdOutlineCurrencyRupee } from "react-icons/md";
 import { AC } from "../../Constants/Contants";
+import { Link } from "react-router-dom";
 export default function Products() {
   return (
-    <div className="flex w-[95%] mx-auto mt-4 gap-3">
-      <div className="bg-white flex-[2] rounded-md p-3">asd</div>
-      <div className="flex flex-[10] gap-1 flex-col">
-        {AC.map((value) => (
-          <div
-            key={value.number}
-            className="bg-white h-60  flex rounded-md p-6"
-          >
+    <div className="flex flex-[10] gap-1 flex-col shadow-md">
+      {AC.map((value) => (
+        <Link key={value.number}>
+          {" "}
+          <div className="bg-white h-60  flex rounded-md p-6">
             <div className="w-64 h-full flex justify-center flex-[2] items-center">
               <img src={value.img} alt={value.name} />
             </div>
@@ -59,19 +57,25 @@ export default function Products() {
               <p className="text-xs">
                 Free Delivery by <span className="font-bold">{value.date}</span>
               </p>
-              {value.hotDeal && (
+              {value.hotDeal === "yes" && (
                 <p className="text-sm text-green-700 rounded-md px-2 py-1 bg-green-100 w-fit">
                   Hot Deal
                 </p>
               )}
               <p className="flex items-center text-sm">
                 Upto <MdOutlineCurrencyRupee />{" "}
-                <span className="font-bold">5,100</span> Off on Exchange
+                <span className="font-bold">{value.cashback}</span> Off on
+                Exchange
               </p>
+              {value.bankOffer === "yes" && (
+                <p className="text-sm text-green-700 rounded-md  font-bold w-fit">
+                  Bank Offer
+                </p>
+              )}
             </div>
           </div>
-        ))}
-      </div>
+        </Link>
+      ))}
     </div>
   );
 }

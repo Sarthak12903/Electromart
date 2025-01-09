@@ -120,7 +120,7 @@ function Dashboard() {
       </section>
       <Service />
       <ProductDash />
-      <Footer />
+      
     </>
   );
 }

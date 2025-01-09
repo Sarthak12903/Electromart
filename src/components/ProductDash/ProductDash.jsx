@@ -4,7 +4,7 @@ export default function ProductDash() {
   return (
     <div className="grid md:grid-cols-4 gap-5 shadow-md sm:grid-cols-2 bg-white p-5 mt-10 sm:w-screen mx-auto lg:w-[77.5%]">
       <Link to={"product"}>
-        <div className="flex justify-center items-center flex-col gap-10 p-6 h-full cursor-pointer">
+        <div className="flex justify-center items-center flex-col gap-10 p-6 h-full hover:border rounded-xl hover:bg-slate-100 cursor-pointer">
           <img src="/DashProduct/AC dash.png" alt="AC" className="w-96 " />
           <div className="flex flex-col justify-center items-center">
             <h2 className="font-bold text-center">AIR CONDITIONER</h2>
