@@ -29,8 +29,13 @@ export default function Filters({
           defaultValue={[0, 100000]}
           min={0}
           max={100000}
+          step={20000}
           className="mt-3"
           value={[minSlider, maxSlider]}
+          onValueChange={(values) => {
+            setMinSlider(values[0]);
+            setMaxSlider(values[1]);
+          }}
         />
         <div className="w-full flex justify-around mt-4">
           <select
