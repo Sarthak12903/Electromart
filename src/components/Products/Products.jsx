@@ -1,11 +1,35 @@
 import { FaStar } from "react-icons/fa";
 import { MdOutlineCurrencyRupee } from "react-icons/md";
-import { AC } from "../../Constants/Contants";
-import { Link } from "react-router-dom";
-export default function Products() {
+import { AC, TV } from "../../Constants/Contants";
+import { Link, useLocation } from "react-router-dom";
+export default function Products({
+  minSlider,
+  maxSlider,
+  selectedBrands,
+  selectedDiscounts,
+  selectedRatings,
+}) {
+  let filteredProducts = [];
+  const location = useLocation();
+
+  const queryParams = new URLSearchParams(location.search);
+
+  const productType = queryParams.get("type");
+  if (productType === "AC") {
+    filteredProducts = AC.filter((value) => {
+      const price = parseInt(value.price.replace(/,/g, ""), 10);
+      return price >= minSlider && price <= maxSlider;
+    });
+  } else if (productType === "TV") {
+    filteredProducts = TV.filter((value) => {
+      const price = parseInt(value.price.replace(/,/g, ""), 10);
+      return price >= minSlider && price <= maxSlider;
+    });
+  }
+
   return (
     <div className="flex flex-[10] gap-1 flex-col shadow-md">
-      {AC.map((value) => (
+      {filteredProducts.map((value) => (
         <Link key={value.number}>
           {" "}
           <div className="bg-white h-60  flex rounded-md p-6">
