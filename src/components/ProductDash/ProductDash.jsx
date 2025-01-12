@@ -25,52 +25,69 @@ export default function ProductDash() {
           </div>
         </div>
       </Link>
-      <div className="flex justify-center items-center flex-col gap-3 p-6 cursor-pointer">
-        <img src="/DashProduct/Gadgets.png" alt="AC" className="w-24" />
-        <div className="flex flex-col justify-center items-center">
-          <h2 className="font-bold text-center">GADGETS</h2>
-          <p className="text-slate-500 text-sm">6 PRODUCTS</p>
+      <Link to={"/product?type=GADGETS"}>
+        <div className="flex justify-center hover:border rounded-xl hover:bg-slate-100 items-center flex-col gap-3 p-6 cursor-pointer">
+          <img src="/DashProduct/Gadgets.png" alt="AC" className="w-24" />
+          <div className="flex flex-col justify-center items-center">
+            <h2 className="font-bold text-center">GADGETS</h2>
+            <p className="text-slate-500 text-sm">6 PRODUCTS</p>
+          </div>
         </div>
-      </div>
-      <div className="flex justify-center items-center flex-col gap-3 p-6 cursor-pointer">
-        <img src="/DashProduct/WashingMachine.png" alt="AC" className="w-36" />
-        <div className="flex flex-col justify-center items-center">
-          <h2 className="font-bold text-center">HOME APPLIANCES</h2>
-          <p className="text-slate-500 text-sm">5 PRODUCTS</p>
+      </Link>
+      <Link to={"/product?type=HOME"}>
+        <div className="flex justify-center hover:border rounded-xl hover:bg-slate-100 items-center flex-col gap-3 p-6 cursor-pointer">
+          <img
+            src="/DashProduct/WashingMachine.png"
+            alt="AC"
+            className="w-36"
+          />
+          <div className="flex flex-col justify-center items-center">
+            <h2 className="font-bold text-center">HOME APPLIANCES</h2>
+            <p className="text-slate-500 text-sm">5 PRODUCTS</p>
+          </div>
         </div>
-      </div>
-      <div className="flex justify-center items-center flex-col gap-10 p-6 cursor-pointer">
-        <img
-          src="/DashProduct/KitchenAppliances.png"
-          alt="AC"
-          className="w-56"
-        />
-        <div className="flex flex-col justify-center items-center">
-          <h2 className="font-bold text-center">KITCHEN APPLIANCES</h2>
-          <p className="text-slate-500 text-sm">6 PRODUCTS</p>
+      </Link>
+      <Link to={"/product?type=KITCHEN"}>
+        <div className="flex justify-center  hover:border rounded-xl hover:bg-slate-100 items-center flex-col gap-10 p-6 cursor-pointer">
+          <img
+            src="/DashProduct/KitchenAppliances.png"
+            alt="AC"
+            className="w-56"
+          />
+          <div className="flex flex-col justify-center items-center">
+            <h2 className="font-bold text-center">KITCHEN APPLIANCES</h2>
+            <p className="text-slate-500 text-sm">6 PRODUCTS</p>
+          </div>
         </div>
-      </div>
-      <div className="flex justify-center items-center flex-col gap-10 p-6 cursor-pointer">
-        <img src="/DashProduct/laptops.png" alt="AC" className="w-96" />
-        <div className="flex flex-col justify-center items-center">
-          <h2 className="font-bold text-center">PC & LAPTOPS</h2>
-          <p className="text-slate-500 text-sm">4 PRODUCTS</p>
+      </Link>
+      <Link to={"/product?type=PC"}>
+        <div className="flex justify-center hover:border rounded-xl hover:bg-slate-100 items-center flex-col gap-10 p-6 cursor-pointer">
+          <img src="/DashProduct/laptops.png" alt="AC" className="w-96" />
+          <div className="flex flex-col justify-center items-center">
+            <h2 className="font-bold text-center">PC & LAPTOPS</h2>
+            <p className="text-slate-500 text-sm">4 PRODUCTS</p>
+          </div>
         </div>
-      </div>
-      <div className="flex justify-center items-center flex-col gap-3 p-6 cursor-pointer">
-        <img src="/DashProduct/Refri.png" alt="AC" className="w-44" />
-        <div className="flex flex-col justify-center items-center">
-          <h2 className="font-bold text-center">REFRIGERATOR</h2>
-          <p className="text-slate-500 text-sm">4 PRODUCTS</p>
+      </Link>
+      <Link to={"/product?type=REFRIGERATOR"}>
+        {" "}
+        <div className="flex justify-center hover:border rounded-xl hover:bg-slate-100 items-center flex-col gap-3 p-6 cursor-pointer">
+          <img src="/DashProduct/Refri.png" alt="AC" className="w-44" />
+          <div className="flex flex-col justify-center items-center">
+            <h2 className="font-bold text-center">REFRIGERATOR</h2>
+            <p className="text-slate-500 text-sm">4 PRODUCTS</p>
+          </div>
         </div>
-      </div>
-      <div className="flex justify-center items-center flex-col gap-10 p-6 cursor-pointer">
-        <img src="/DashProduct/SmartHome.png" alt="AC" className="w-36" />
-        <div className="flex flex-col justify-center items-center">
-          <h2 className="font-bold text-center">SMART HOME</h2>
-          <p className="text-slate-500 text-sm">5 PRODUCTS</p>
+      </Link>
+      <Link to={"/product?type=SMART"}>
+        <div className="flex justify-center hover:border rounded-xl hover:bg-slate-100 items-center flex-col gap-10 p-6 cursor-pointer">
+          <img src="/DashProduct/SmartHome.png" alt="AC" className="w-36" />
+          <div className="flex flex-col justify-center items-center">
+            <h2 className="font-bold text-center">SMART HOME</h2>
+            <p className="text-slate-500 text-sm">5 PRODUCTS</p>
+          </div>
         </div>
-      </div>
+      </Link>
     </div>
   );
 }
