@@ -31,7 +31,7 @@ export default function Products({
     <div className="flex flex-[10] gap-1 flex-col shadow-md">
       {filteredProducts.length > 0 ? (
         filteredProducts.map((value) => (
-          <Link key={value.number}>
+          <Link key={value.number} className="group">
             {" "}
             <div className="bg-white h-60  flex rounded-md p-6">
               <div className="w-64 h-full flex justify-center flex-[2] items-center">
@@ -39,7 +39,7 @@ export default function Products({
               </div>
               <div className="p-3 flex-[6] flex flex-col pt-4">
                 <div>
-                  <h1 className="text-lg font-medium tracking-tight text-black line-clamp-2">
+                  <h1 className="text-lg group-hover:text-blue-700 font-medium tracking-tight text-black line-clamp-2">
                     {value.nameDescription}
                   </h1>
                   <span className="flex text-sm gap-2 text-gray-500 font-semibold mt-1">
