@@ -75,7 +75,7 @@ function Dashboard() {
           {images.map((slide) => (
             <Link
               key={slide.number}
-              to={"/product"}
+              to={`/product?type=${slide.redirect}`}
               className="w-full flex-shrink-0"
             >
               <img

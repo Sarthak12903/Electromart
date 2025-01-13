@@ -1,16 +1,19 @@
 import { GiFallingStar } from "react-icons/gi";
+import { Link } from "react-router-dom";
 export default function Footer() {
   return (
     <footer className="bg-white w-full p-5 py-16 shadow-md mt-10">
       <div className="w-[80%] mx-auto flex flex-col lg:flex-row gap-20   justify-around">
         <div>
           <div className="flex-shrink-0 ">
-            <h1 className="flex items-center text-lg sm:text-xl text-slate-500 font-semibold gap-1">
-              <GiFallingStar className=" h-5 w-5" />
-              <span className="inline md:text-2xl sm:text-base">
-                Electromart
-              </span>
-            </h1>
+            <Link to={"/"}>
+              <h1 className="flex items-center text-lg sm:text-xl text-slate-500 font-semibold gap-1">
+                <GiFallingStar className=" h-5 w-5" />
+                <span className="inline md:text-2xl sm:text-base">
+                  Electromart
+                </span>
+              </h1>
+            </Link>
           </div>
         </div>
         <div>
