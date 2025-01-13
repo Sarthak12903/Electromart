@@ -39,7 +39,7 @@ export default function Products({
               </div>
               <div className="p-3 flex-[6] flex flex-col pt-4">
                 <div>
-                  <h1 className="text-lg group-hover:text-blue-700 font-medium tracking-tight text-black line-clamp-2">
+                  <h1 className="text-lg group-hover:text-blue-700 font-semibold tracking-tight text-black line-clamp-2">
                     {value.nameDescription}
                   </h1>
                   <span className="flex text-sm gap-2 text-gray-500 font-semibold mt-1">
@@ -50,22 +50,45 @@ export default function Products({
                     {value.ratingNumber} Ratings & {value.reviewNumber} Reviews
                   </span>
                 </div>
-                <ul className="list-disc p-4 text-sm ">
-                  <li>Annual Power Usage: {value.powerUsage} W</li>
-                  <li>Room Size: {value.roomSize}</li>
-                  <li>
-                    {value.productWarranty
-                      ? `${value.productWarranty}  Year Warranty On Product`
-                      : ""}
-                    {value.pcbWarranty
-                      ? `, ${value.pcbWarranty} Years Warranty On PCB`
-                      : ""}{" "}
-                    and{" "}
-                    {value.compressorWarranty
-                      ? `${value.compressorWarranty} Year Warranty on Compressor`
-                      : ""}
-                  </li>
-                </ul>
+                {productType === "AC" && (
+                  <ul className="list-disc p-4 text-sm ">
+                    <li>Annual Power Usage: {value.powerUsage} W</li>
+                    <li>Room Size: {value.roomSize}</li>
+                    <li>
+                      {value.productWarranty
+                        ? `${value.productWarranty}  Year Warranty On Product`
+                        : ""}
+                      {value.pcbWarranty
+                        ? `, ${value.pcbWarranty} Years Warranty On PCB`
+                        : ""}{" "}
+                      and{" "}
+                      {value.compressorWarranty
+                        ? `${value.compressorWarranty} Year Warranty on Compressor`
+                        : ""}
+                    </li>
+                  </ul>
+                )}
+                {productType === "TV" && (
+                  <ul className="list-disc p-4 text-sm ">
+                    <li>Operating System: {value.operatingSystem} </li>
+                    <li> {value.pixels}</li>
+                    <li>Launch Year: {value.launch}</li>
+                    <li>
+                      {value.productWarranty
+                        ? `${value.productWarranty}  Year Warranty On Product`
+                        : ""}
+                      {value.pcbWarranty
+                        ? `, ${value.pcbWarranty} Years Warranty On PCB`
+                        : ""}{" "}
+                      {value.compressorWarranty
+                        ? `and ${value.compressorWarranty}  Year Warranty on Compressor`
+                        : ""}
+                      {value.additionalWarranty
+                        ? `and ${value.additionalWarranty}  Year Additional  Warranty on Panel`
+                        : ""}
+                    </li>
+                  </ul>
+                )}
               </div>
               <div className="flex-[2] flex flex-col ite py-3 gap-2">
                 <h1 className="flex gap-1 items-center text-3xl font-bold">
@@ -90,7 +113,7 @@ export default function Products({
                 )}
                 <p className="flex items-center text-sm">
                   Upto <MdOutlineCurrencyRupee />{" "}
-                  <span className="font-bold">{value.cashback}</span> Off on
+                  <span className="font-bold">{value.cashback}</span>Off on
                   Exchange
                 </p>
                 {value.bankOffer === "yes" && (
