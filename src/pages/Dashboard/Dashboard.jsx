@@ -75,7 +75,7 @@ function Dashboard() {
           {images.map((slide) => (
             <Link
               key={slide.number}
-              to={slide.redirect}
+              to={"/product"}
               className="w-full flex-shrink-0"
             >
               <img
@@ -120,7 +120,6 @@ function Dashboard() {
       </section>
       <Service />
       <ProductDash />
-      
     </>
   );
 }

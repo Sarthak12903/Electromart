@@ -176,7 +176,7 @@ const TV = [
     offer: "46",
     date: "Tomorrow",
     hotDeal: "yes",
-    cashback: "5,400",
+    cashback: "5,400 ",
     bankOffer: "no",
   },
   {

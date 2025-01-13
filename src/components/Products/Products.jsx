@@ -113,7 +113,7 @@ export default function Products({
                 )}
                 <p className="flex items-center text-sm">
                   Upto <MdOutlineCurrencyRupee />{" "}
-                  <span className="font-bold">{value.cashback}</span>Off on
+                  <span className="font-bold">{value.cashback} </span> Off on
                   Exchange
                 </p>
                 {value.bankOffer === "yes" && (
