@@ -51,7 +51,7 @@ export default function Products({
         filteredProducts.map((value) => (
           <Link key={value.number} className="group">
             {" "}
-            <div className="bg-white h-60  flex rounded-md p-6">
+            <div className="bg-white h-auto  flex rounded-md p-6">
               <div className="w-64 h-full flex justify-center flex-[2] items-center">
                 <img
                   src={value.img}
