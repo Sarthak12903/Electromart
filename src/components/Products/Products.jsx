@@ -28,7 +28,11 @@ export default function Products({
   } else if (productType === "Gadgets") {
     filteredProducts = Gadgets.filter((value) => {
       const price = parseInt(value.price.replace(/,/g, ""), 10);
-      return price >= minSlider && price <= maxSlider;
+      if (maxSlider === 100000) {
+        return price >= minSlider;
+      } else {
+        return price >= minSlider && price <= maxSlider;
+      }
     });
   }
 
@@ -109,23 +113,14 @@ export default function Products({
                     <li>
                       {value.rearCam} | {value.frontCam} Front Camera
                     </li>
-                    <li>{value.battery} Battery</li>
+                    {value.battery && <li>{value.battery} Battery</li>}
                     <li>{value.processor} Processor</li>
                     <li>
                       {value.productWarranty
-                        ? `${value.productWarranty}  Year Warranty On Product`
-                        : ""}
-                      {value.pcbWarranty
-                        ? `, ${value.pcbWarranty} Years Warranty On PCB`
-                        : ""}{" "}
-                      {value.compressorWarranty
-                        ? `and ${value.compressorWarranty}  Year Warranty on Compressor`
-                        : ""}
-                      {value.additionalWarranty
-                        ? `and ${value.additionalWarranty}  Year Additional  Warranty on Panel`
+                        ? `${value.productWarranty}   Warranty On Product`
                         : ""}
                       {value.AccessoryWarranty
-                        ? `and ${value.AccessoryWarranty}  Year Additional  Warranty on Aceesories`
+                        ? `and ${value.AccessoryWarranty}  Additional  Warranty on Aceesories`
                         : ""}
                     </li>
                   </ul>
