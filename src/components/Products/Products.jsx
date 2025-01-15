@@ -82,7 +82,11 @@ export default function Products({
         <div className="flex flex-[10] bg-white gap-1 flex-col shadow-md pb-6">
           {filteredProducts.length > 0 ? (
             filteredProducts.map((value) => (
-              <Link key={value.number} className="group m-6" to={""}>
+              <Link
+                key={value.number}
+                className="group m-6"
+                to={"/productDetail"}
+              >
                 {" "}
                 <div className="bg-white h-60  flex gap-2 rounded-md p-6">
                   <div className="w-64 h-full flex justify-center   flex-[2] items-center">
@@ -251,7 +255,7 @@ export default function Products({
         <div className=" flex-[10] grid bg-white grid-cols-4 gap-4 shadow-md p-6">
           {filteredProducts.length > 0 ? (
             filteredProducts.map((value) => (
-              <Link key={value.number} to={""} className="group">
+              <Link key={value.number} to={"/productDetail"} className="group">
                 <div className="flex flex-col rounded-md h-fit cursor-pointer p-6 hover:shadow-xl hover:scale-105 transition-all ease-linear duration-200 ">
                   <div className="w-full ">
                     <img src={value.img} className={value.size} />

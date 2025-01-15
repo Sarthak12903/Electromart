@@ -6,6 +6,7 @@ import Footer from "./components/Footer/Footer";
 import useScrollToTop from "./Hooks/Scroll";
 import "@radix-ui/themes/styles.css";
 import { Theme } from "@radix-ui/themes";
+import ProductDetail from "./pages/ProductDetail/ProductDetail";
 const ScrollToTopWrapper = ({ children }) => {
   useScrollToTop();
   return children;
@@ -20,6 +21,7 @@ export default function App() {
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/product" element={<ProductList />} />
+              <Route path="/productDetail" element={<ProductDetail />} />
             </Routes>
             <Footer />
           </ScrollToTopWrapper>
