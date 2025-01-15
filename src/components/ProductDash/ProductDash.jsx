@@ -43,7 +43,7 @@ export default function ProductDash() {
           />
           <div className="flex flex-col justify-center items-center">
             <h2 className="font-bold text-center">HOME APPLIANCES</h2>
-            <p className="text-slate-500 text-sm">5 PRODUCTS</p>
+            <p className="text-slate-500 text-sm">4 PRODUCTS</p>
           </div>
         </div>
       </Link>

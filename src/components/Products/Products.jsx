@@ -56,7 +56,7 @@ export default function Products({
                 <img
                   src={value.img}
                   alt={value.name}
-                  className={productType === "Gadgets" && value.size}
+                  className={value.size && value.size}
                 />
               </div>
               <div className="p-3 flex-[6] flex flex-col pt-4">
@@ -129,7 +129,23 @@ export default function Products({
                         ? `${value.productWarranty}   Warranty On Product`
                         : ""}
                       {value.AccessoryWarranty
-                        ? `and ${value.AccessoryWarranty}  Additional  Warranty on Aceesories`
+                        ? ` and ${value.AccessoryWarranty}  Additional  Warranty on Aceesories`
+                        : ""}
+                    </li>
+                  </ul>
+                )}
+                {productType === "HOME" && (
+                  <ul className="list-disc p-4 text-sm ">
+                    <li>{value.rpm} RPM MAX Speed</li>
+                    <li>{value.star} Star Rating</li>
+                    {value.builtinHeater && <li>With in Built Heater</li>}
+                    {value.wifi && <li>With Wifi connectivity</li>}
+                    <li>
+                      {value.productWarranty
+                        ? `${value.productWarranty}   Warranty On Product`
+                        : ""}
+                      {value.motorWarranty
+                        ? ` and ${value.motorWarranty}  Additional  Warranty on Motor`
                         : ""}
                     </li>
                   </ul>
@@ -156,11 +172,13 @@ export default function Products({
                     Hot Deal
                   </p>
                 )}
-                <p className="flex items-center text-sm">
-                  Upto <MdOutlineCurrencyRupee />{" "}
-                  <span className="font-bold">{value.cashback} </span> Off on
-                  Exchange
-                </p>
+                {value.cashback && (
+                  <p className="flex items-center text-sm">
+                    Upto <MdOutlineCurrencyRupee />{" "}
+                    <span className="font-bold">{value.cashback} </span> Off on
+                    Exchange
+                  </p>
+                )}
                 {value.bankOffer === "yes" && (
                   <p className="text-sm text-green-700 rounded-md  font-bold w-fit">
                     Bank Offer
