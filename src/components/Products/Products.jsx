@@ -65,13 +65,15 @@ export default function Products({
 
   return (
     <>
-      {["HOME", "TV", "AC", "Gadgets", "PC"].includes(productType) && (
+      {["HOME", "TV", "AC", "Gadgets", "PC", "REFRIGERATOR", "SMART"].includes(
+        productType
+      ) && (
         <div className="flex flex-[10] bg-white gap-1 flex-col shadow-md pb-6">
           {filteredProducts.length > 0 ? (
             filteredProducts.map((value) => (
-              <Link key={value.number} className="group m-6">
+              <Link key={value.number} className="group m-6" to={""}>
                 {" "}
-                <div className="bg-white h-60  flex rounded-md p-6">
+                <div className="bg-white h-60  flex gap-2 rounded-md p-6">
                   <div className="w-64 h-full flex justify-center   flex-[2] items-center">
                     <img
                       src={value.img}
