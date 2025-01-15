@@ -9,7 +9,7 @@ export default function ProductList() {
   const [selectedDiscounts, setSelectedDiscounts] = useState([]);
 
   return (
-    <div className="flex w-[95%] mx-auto mt-4 gap-3">
+    <div className="flex w-[95%]  mx-auto mt-4 gap-3">
       <div className="bg-white flex-[2] shadow-md rounded-md p-3">
         <Filters
           minSlider={minSlider}

@@ -56,8 +56,8 @@ export default function Products({
 
   return (
     <>
-      {["HOME", "TV", "AC", "Gadgets"].includes(productType) && (
-        <div className="flex flex-[10] gap-1 flex-col shadow-md pb-6">
+      {["HOME", "TV", "AC", "Gadgets", "PC"].includes(productType) && (
+        <div className="flex flex-[10] bg-white gap-1 flex-col shadow-md pb-6">
           {filteredProducts.length > 0 ? (
             filteredProducts.map((value) => (
               <Link key={value.number} className="group">
@@ -209,16 +209,18 @@ export default function Products({
       )}
 
       {productType === "KITCHEN" && (
-        <div className=" flex-[10] grid grid-cols-4 gap-4 shadow-md p-6">
-          {filteredProducts.length > 0 &&
+        <div className=" flex-[10] grid bg-white grid-cols-4 gap-4 shadow-md p-6">
+          {filteredProducts.length > 0 ? (
             filteredProducts.map((value) => (
-              <Link key={value.number} to={""}>
+              <Link key={value.number} to={""} className="group">
                 <div className="flex flex-col rounded-md h-fit cursor-pointer p-6 hover:shadow-xl hover:scale-105 transition-all ease-linear duration-200 ">
                   <div className="w-full ">
                     <img src={value.img} className={value.size} />
                   </div>
                   <div className="leading-tight">
-                    <h4 className="line-clamp-2">{value.nameDescription}</h4>
+                    <h4 className="line-clamp-2 group-hover:text-blue-700">
+                      {value.nameDescription}
+                    </h4>
                     <p className="text-xs text-slate-700">{value.color}</p>
                     <span className="flex items-center text-xs gap-2 text-gray-500 font-semibold mt-1">
                       <button className="flex gap-1 justify-center items-center text-white text-xs  bg-green-600 px-1 m-1 rounded-sm">
@@ -233,17 +235,25 @@ export default function Products({
                         {value.price}
                       </h1>
                       <p className="flex gap-1 text-green-700 text-sm font-medium">
-                        <span className="flex items-center line-through text-black">
+                        <span className="flex items-center line-through text-slate-500">
                           <MdOutlineCurrencyRupee />
                           {value.originalPrice}
                         </span>
-                        {value.offer}% off
+                        <span className="font-bold"> {value.offer}% off</span>
                       </p>
                     </div>
                     <div className=" flex flex-col gap-2">
                       {" "}
                       {value.freeDelivery === "yes" && (
                         <p className="text-xs  ">Free Delivery</p>
+                      )}
+                      {value.cashback && (
+                        <p className="text-xs  ">
+                          Upto{" "}
+                          <span className="font-bold">
+                            {value.cashback} Off on Exchange
+                          </span>
+                        </p>
                       )}
                       {value.hotDeal === "yes" && (
                         <p className="text-xs text-violet-800 rounded-md px-2 py-1 bg-violet-200 w-fit">
@@ -259,7 +269,12 @@ export default function Products({
                   </div>
                 </div>
               </Link>
-            ))}
+            ))
+          ) : (
+            <div className="w-[80rem] flex justify-center items-center text-slate-500">
+              No Products are Available
+            </div>
+          )}
         </div>
       )}
     </>

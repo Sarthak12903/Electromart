@@ -13,7 +13,7 @@ const ScrollToTopWrapper = ({ children }) => {
 export default function App() {
   return (
     <Theme>
-      <div className="flex flex-col justify-center items-center select-none">
+      <div className="flex flex-col bg-slate-100  justify-center items-center select-none">
         <BrowserRouter>
           <ScrollToTopWrapper>
             <Navbar />
