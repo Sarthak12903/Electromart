@@ -212,62 +212,53 @@ export default function Products({
         <div className=" flex-[10] grid grid-cols-4 gap-4 shadow-md p-6">
           {filteredProducts.length > 0 &&
             filteredProducts.map((value) => (
-              <div
-                key={value.number}
-                className="flex flex-col h-fit p-6 hover:shadow-xl hover:scale-105 transition-all ease-linear duration-200 "
-              >
-                <div className="w-full ">
-                  <img src={value.img} className={value.size} />
-                </div>
-                <div className="leading-tight">
-                  <h4 className="line-clamp-2">{value.nameDescription}</h4>
-                  <p className="text-xs text-slate-700">{value.color}</p>
-                  <span className="flex items-center text-xs gap-2 text-gray-500 font-semibold mt-1">
-                    <button className="flex gap-1 justify-center items-center text-white text-xs  bg-green-600 px-1 m-1 rounded-sm">
-                      {value.ratingStar}
-                      <FaStar fill="white" className="text-white w-3 h-3" />
-                    </button>{" "}
-                    {value.ratingNumber} Ratings & {value.reviewNumber} Reviews
-                  </span>
-                  <div className="flex-[2] flex  items-center   gap-2">
-                    <h1 className="flex gap-1 items-center text-lg font-bold">
-                      <MdOutlineCurrencyRupee />
-                      {value.price}
-                    </h1>
-                    <p className="flex gap-1 text-green-700 text-sm font-medium">
-                      <span className="flex items-center line-through text-black">
+              <Link key={value.number} to={""}>
+                <div className="flex flex-col rounded-md h-fit cursor-pointer p-6 hover:shadow-xl hover:scale-105 transition-all ease-linear duration-200 ">
+                  <div className="w-full ">
+                    <img src={value.img} className={value.size} />
+                  </div>
+                  <div className="leading-tight">
+                    <h4 className="line-clamp-2">{value.nameDescription}</h4>
+                    <p className="text-xs text-slate-700">{value.color}</p>
+                    <span className="flex items-center text-xs gap-2 text-gray-500 font-semibold mt-1">
+                      <button className="flex gap-1 justify-center items-center text-white text-xs  bg-green-600 px-1 m-1 rounded-sm">
+                        {value.ratingStar}
+                        <FaStar fill="white" className="text-white w-3 h-3" />
+                      </button>{" "}
+                      ({value.ratingNumber})
+                    </span>
+                    <div className="flex-[2] flex  items-center   gap-2">
+                      <h1 className="flex gap-1 items-center text-lg font-bold">
                         <MdOutlineCurrencyRupee />
-                        {value.originalPrice}
-                      </span>
-                      {value.offer}% off
-                    </p>
-                  </div>
-                  <div className=" flex flex-col gap-2">
-                    {" "}
-                    <p className="text-xs   ">
-                      Free Delivery by{" "}
-                      <span className="font-bold">{value.date}</span>
-                    </p>
-                    {value.hotDeal === "yes" && (
-                      <p className="text-xs text-green-700 rounded-md px-2 py-1 bg-green-100 w-fit">
-                        Hot Deal
+                        {value.price}
+                      </h1>
+                      <p className="flex gap-1 text-green-700 text-sm font-medium">
+                        <span className="flex items-center line-through text-black">
+                          <MdOutlineCurrencyRupee />
+                          {value.originalPrice}
+                        </span>
+                        {value.offer}% off
                       </p>
-                    )}
-                    {value.cashback && (
-                      <p className="flex items-center text-xs">
-                        Upto <MdOutlineCurrencyRupee />{" "}
-                        <span className="font-bold">{value.cashback} </span> Off
-                        on Exchange
-                      </p>
-                    )}
-                    {value.bankOffer === "yes" && (
-                      <p className="text-xs text-green-700 rounded-md  font-bold w-fit">
-                        Bank Offer
-                      </p>
-                    )}
+                    </div>
+                    <div className=" flex flex-col gap-2">
+                      {" "}
+                      {value.freeDelivery === "yes" && (
+                        <p className="text-xs  ">Free Delivery</p>
+                      )}
+                      {value.hotDeal === "yes" && (
+                        <p className="text-xs text-violet-800 rounded-md px-2 py-1 bg-violet-200 w-fit">
+                          Hot Deal
+                        </p>
+                      )}
+                      {value.bankOffer === "yes" && (
+                        <p className="text-xs text-green-700 rounded-md  font-bold w-fit">
+                          Bank Offer
+                        </p>
+                      )}
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
         </div>
       )}
