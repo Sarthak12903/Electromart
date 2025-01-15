@@ -25,7 +25,7 @@ export default function ProductDash() {
           </div>
         </div>
       </Link>
-      <Link to={"/product?type=GADGETS"}>
+      <Link to={"/product?type=Gadgets"}>
         <div className="flex justify-center hover:border rounded-xl hover:bg-slate-100 items-center flex-col gap-3 p-6 cursor-pointer">
           <img src="/DashProduct/Gadgets.png" alt="AC" className="w-24" />
           <div className="flex flex-col justify-center items-center">

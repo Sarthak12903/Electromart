@@ -1,6 +1,6 @@
 import { FaStar } from "react-icons/fa";
 import { MdOutlineCurrencyRupee } from "react-icons/md";
-import { AC, TV } from "../../Constants/Contants";
+import { AC, TV, Gadgets } from "../../Constants/Contants";
 import { Link, useLocation } from "react-router-dom";
 export default function Products({
   minSlider,
@@ -25,17 +25,26 @@ export default function Products({
       const price = parseInt(value.price.replace(/,/g, ""), 10);
       return price >= minSlider && price <= maxSlider;
     });
+  } else if (productType === "Gadgets") {
+    filteredProducts = Gadgets.filter((value) => {
+      const price = parseInt(value.price.replace(/,/g, ""), 10);
+      return price >= minSlider && price <= maxSlider;
+    });
   }
 
   return (
-    <div className="flex flex-[10] gap-1 flex-col shadow-md">
+    <div className="flex flex-[10] gap-1 flex-col shadow-md pb-6">
       {filteredProducts.length > 0 ? (
         filteredProducts.map((value) => (
           <Link key={value.number} className="group">
             {" "}
             <div className="bg-white h-60  flex rounded-md p-6">
               <div className="w-64 h-full flex justify-center flex-[2] items-center">
-                <img src={value.img} alt={value.name} />
+                <img
+                  src={value.img}
+                  alt={value.name}
+                  className={productType === "Gadgets" && value.size}
+                />
               </div>
               <div className="p-3 flex-[6] flex flex-col pt-4">
                 <div>
@@ -85,6 +94,38 @@ export default function Products({
                         : ""}
                       {value.additionalWarranty
                         ? `and ${value.additionalWarranty}  Year Additional  Warranty on Panel`
+                        : ""}
+                    </li>
+                  </ul>
+                )}
+                {productType === "Gadgets" && (
+                  <ul className="list-disc p-4 text-sm ">
+                    <li>
+                      {value.ram && `${value.ram} RAM |`} {value.rom} ROM
+                      {value.expandable &&
+                        ` | Expandable ${value.expandable}`}{" "}
+                    </li>
+                    <li>{value.display}</li>
+                    <li>
+                      {value.rearCam} | {value.frontCam} Front Camera
+                    </li>
+                    <li>{value.battery} Battery</li>
+                    <li>{value.processor} Processor</li>
+                    <li>
+                      {value.productWarranty
+                        ? `${value.productWarranty}  Year Warranty On Product`
+                        : ""}
+                      {value.pcbWarranty
+                        ? `, ${value.pcbWarranty} Years Warranty On PCB`
+                        : ""}{" "}
+                      {value.compressorWarranty
+                        ? `and ${value.compressorWarranty}  Year Warranty on Compressor`
+                        : ""}
+                      {value.additionalWarranty
+                        ? `and ${value.additionalWarranty}  Year Additional  Warranty on Panel`
+                        : ""}
+                      {value.AccessoryWarranty
+                        ? `and ${value.AccessoryWarranty}  Year Additional  Warranty on Aceesories`
                         : ""}
                     </li>
                   </ul>
