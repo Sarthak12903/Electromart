@@ -1,6 +1,6 @@
 import { FaStar } from "react-icons/fa";
 import { MdOutlineCurrencyRupee } from "react-icons/md";
-import { AC, TV, Gadgets, HOME, KITCHEN } from "../../Constants/Contants";
+import { AC, TV, Gadgets, HOME, KITCHEN, PC } from "../../Constants/Contants";
 import { Link, useLocation } from "react-router-dom";
 export default function Products({
   minSlider,
@@ -45,6 +45,15 @@ export default function Products({
     });
   } else if (productType === "KITCHEN") {
     filteredProducts = KITCHEN.filter((value) => {
+      const price = parseInt(value.price.replace(/,/g, ""), 10);
+      if (maxSlider === 100000) {
+        return price >= minSlider;
+      } else {
+        return price >= minSlider && price <= maxSlider;
+      }
+    });
+  } else if (productType === "PC") {
+    filteredProducts = PC.filter((value) => {
       const price = parseInt(value.price.replace(/,/g, ""), 10);
       if (maxSlider === 100000) {
         return price >= minSlider;
@@ -149,6 +158,22 @@ export default function Products({
                     {productType === "HOME" && (
                       <ul className="list-disc p-4 text-sm ">
                         <li>{value.rpm} RPM MAX Speed</li>
+                        <li>{value.star} Star Rating</li>
+                        {value.builtinHeater && <li>With in Built Heater</li>}
+                        {value.wifi && <li>With Wifi connectivity</li>}
+                        <li>
+                          {value.productWarranty
+                            ? `${value.productWarranty}   Warranty On Product`
+                            : ""}
+                          {value.motorWarranty
+                            ? ` and ${value.motorWarranty}  Additional  Warranty on Motor`
+                            : ""}
+                        </li>
+                      </ul>
+                    )}
+                    {productType === "PC" && (
+                      <ul className="list-disc p-4 text-sm ">
+                        <li>{value.processor}</li>
                         <li>{value.star} Star Rating</li>
                         {value.builtinHeater && <li>With in Built Heater</li>}
                         {value.wifi && <li>With Wifi connectivity</li>}

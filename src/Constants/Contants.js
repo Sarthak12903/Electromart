@@ -714,6 +714,32 @@ const KITCHEN = [
   },
 ];
 
-const PC = [];
+const PC = [
+  {
+    number: 1,
+    name: "hp",
+    nameDescription:
+      "HP 15s Intel Core i3 12th Gen 1215U - (8 GB/512 GB SSD/Windows 11 Home) 15s-fy5003TU Thin and Light Laptop  (15.6 inch, Natural Silver, 1.69 Kg, With MS Office)",
+    ratingStar: 4.1,
+    color: "Black",
+    size: "mt-4",
+    ratingNumber: "456",
+    reviewNumber: "1,163",
+    img: "/ProductList/hp.png",
+    rpm: "1400",
+    productWarranty: "2 year",
+    motorWarranty: "20 Year",
+    builtinHeater: "yes",
+    wifi: "yes",
+    star: 5,
+    price: "53,247",
+    originalPrice: "43,895",
+    offer: "16",
+    freeDelivery: "yes",
+    hotDeal: "no",
+    cashback: "2,850 ",
+    bankOffer: "yes",
+  },
+];
 
 export { AC, TV, Gadgets, HOME, KITCHEN, PC };
