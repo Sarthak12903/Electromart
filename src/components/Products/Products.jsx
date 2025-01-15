@@ -69,10 +69,10 @@ export default function Products({
         <div className="flex flex-[10] bg-white gap-1 flex-col shadow-md pb-6">
           {filteredProducts.length > 0 ? (
             filteredProducts.map((value) => (
-              <Link key={value.number} className="group">
+              <Link key={value.number} className="group m-6">
                 {" "}
-                <div className="bg-white h-auto  flex rounded-md p-6">
-                  <div className="w-64 h-full flex justify-center flex-[2] items-center">
+                <div className="bg-white h-60  flex rounded-md p-6">
+                  <div className="w-64 h-full flex justify-center   flex-[2] items-center">
                     <img
                       src={value.img}
                       alt={value.name}
@@ -174,21 +174,22 @@ export default function Products({
                     {productType === "PC" && (
                       <ul className="list-disc p-4 text-sm ">
                         <li>{value.processor}</li>
-                        <li>{value.star} Star Rating</li>
-                        {value.builtinHeater && <li>With in Built Heater</li>}
-                        {value.wifi && <li>With Wifi connectivity</li>}
+                        <li>{value.ram}</li>
+                        <li>{value.operatingSystem} Operating System</li>
+                        <li>{value.ssd} SSD</li>
+                        <li>{value.display}</li>
                         <li>
                           {value.productWarranty
-                            ? `${value.productWarranty}   Warranty On Product`
+                            ? `${value.productWarranty}  Onsite Warranty On Product`
                             : ""}
-                          {value.motorWarranty
-                            ? ` and ${value.motorWarranty}  Additional  Warranty on Motor`
+                          {value.carryonWarranty
+                            ? ` and ${value.carryonWarranty}  Carry-in Warranty `
                             : ""}
                         </li>
                       </ul>
                     )}
                   </div>
-                  <div className="flex-[2] flex flex-col  py-3 gap-2">
+                  <div className="flex-[2] flex flex-col   py-6 gap-2">
                     <h1 className="flex gap-1 items-center text-3xl font-bold">
                       <MdOutlineCurrencyRupee />
                       {value.price}
