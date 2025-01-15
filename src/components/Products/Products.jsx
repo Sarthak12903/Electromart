@@ -1,6 +1,6 @@
 import { FaStar } from "react-icons/fa";
 import { MdOutlineCurrencyRupee } from "react-icons/md";
-import { AC, TV, Gadgets } from "../../Constants/Contants";
+import { AC, TV, Gadgets, HOME } from "../../Constants/Contants";
 import { Link, useLocation } from "react-router-dom";
 export default function Products({
   minSlider,
@@ -27,6 +27,15 @@ export default function Products({
     });
   } else if (productType === "Gadgets") {
     filteredProducts = Gadgets.filter((value) => {
+      const price = parseInt(value.price.replace(/,/g, ""), 10);
+      if (maxSlider === 100000) {
+        return price >= minSlider;
+      } else {
+        return price >= minSlider && price <= maxSlider;
+      }
+    });
+  } else if (productType === "HOME") {
+    filteredProducts = HOME.filter((value) => {
       const price = parseInt(value.price.replace(/,/g, ""), 10);
       if (maxSlider === 100000) {
         return price >= minSlider;

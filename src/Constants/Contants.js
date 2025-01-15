@@ -369,4 +369,34 @@ const Gadgets = [
   },
 ];
 
-export { AC, TV, Gadgets };
+const HOME = [
+  {
+    number: 6,
+    name: "GooglePixel",
+    nameDescription: "Google Pixel 9 (Porcelain, 256 GB)  (12 GB RAM)",
+    ratingStar: 4.6,
+    size: "w-44 mt-6",
+    ratingNumber: "1,876",
+    reviewNumber: "202",
+    img: "/ProductList/.png",
+    ram: "12GB",
+    rom: "256GB",
+    expandable: "",
+    display: "16.0 cm (6.3 inch) Dispaly",
+    rearCam: "50MP + 48MP",
+    frontCam: "10.5MP",
+    battery: "4700mAh ",
+    processor: " Google Tensor G4",
+    productWarranty: "1 year",
+    AccessoryWarranty: "",
+    price: "74,999",
+    originalPrice: "79,999",
+    offer: "6%",
+    date: "Tomorrow",
+    hotDeal: "yes",
+    cashback: "63,000 ",
+    bankOffer: "no",
+  },
+];
+
+export { AC, TV, Gadgets, HOME };
