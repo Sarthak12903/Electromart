@@ -65,9 +65,20 @@ export default function Products({
 
   return (
     <>
-      {["HOME", "TV", "AC", "Gadgets", "PC", "REFRIGERATOR", "SMART"].includes(
-        productType
-      ) && (
+      {[
+        "HOME",
+        "TV",
+        "AC",
+        "Gadgets",
+        "PC",
+        "REFRIGERATOR",
+        "SMART",
+        "iphone",
+        "airpods",
+        "watch",
+        "s24",
+        "buds3",
+      ].includes(productType) && (
         <div className="flex flex-[10] bg-white gap-1 flex-col shadow-md pb-6">
           {filteredProducts.length > 0 ? (
             filteredProducts.map((value) => (

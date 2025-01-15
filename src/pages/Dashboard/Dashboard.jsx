@@ -10,31 +10,31 @@ const images = [
     number: 1,
     path: "/Carousel /Apple.png",
     name: "iPhone 16 Pro",
-    redirect: "/iphone",
+    redirect: "iphone",
   },
   {
     number: 2,
     path: "/Carousel /Airpods 3 Pro.png",
     name: "Apple AirPods 3 Pro",
-    redirect: "/airpods",
+    redirect: "airpods",
   },
   {
     number: 3,
     path: "/Carousel /Apple Watch.png",
     name: "Apple Watch Ultra 3",
-    redirect: "/watch",
+    redirect: "watch",
   },
   {
     number: 4,
     path: "/Carousel /Galaxy S24U.png",
     name: "Samsung Galaxy S24 Ultra",
-    redirect: "/s24",
+    redirect: "s24",
   },
   {
     number: 5,
     path: "/Carousel /Samsung buds.png",
     name: "Samsung Buds 3",
-    redirect: "/buds3",
+    redirect: "buds3",
   },
 ];
 
