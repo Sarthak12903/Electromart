@@ -1,5 +1,6 @@
 import Filters from "../../components/Filters/Filters";
 import Products from "../../components/Products/Products";
+import { FaFilter } from "react-icons/fa";
 import { useState } from "react";
 export default function ProductList() {
   const [minSlider, setMinSlider] = useState(0);
@@ -24,7 +25,12 @@ export default function ProductList() {
           setSelectedRatings={setSelectedRatings}
         />
       </div>
-      <div className="lg:hidden block">Filter:</div>
+      <div className="lg:hidden   p-1">
+        <button className="flex items-center gap-1 bg-white px-4 py-2 rounded-xl active:scale-95 hover:bg-slate-200">
+          {" "}
+          Filter: <FaFilter className="w-4 h-4" />
+        </button>
+      </div>
       <Products
         minSlider={minSlider}
         maxSlider={maxSlider}
