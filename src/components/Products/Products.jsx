@@ -295,7 +295,7 @@ export default function Products({
       )}
 
       {["KITCHEN", "SMART"].includes(productType) && (
-        <div className=" flex-[10] grid bg-white grid-cols-4 gap-4 shadow-md p-6">
+        <div className=" flex-[10] grid h-fit bg-white grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 shadow-md p-6">
           {filteredProducts.length > 0 ? (
             filteredProducts.map((value) => (
               <Link key={value.number} to={"/productDetail"} className="group">
@@ -317,8 +317,8 @@ export default function Products({
                         ({value.ratingNumber})
                       </span>
                     )}
-                    <div className="flex-[2] flex  items-center   gap-2">
-                      <h1 className="flex gap-1 items-center text-lg font-bold">
+                    <div className="flex-[2] flex flex-col lg:flex-row  lg:items-center   ">
+                      <h1 className="flex gap-1 items-center text-sm font-bold">
                         <MdOutlineCurrencyRupee />
                         {value.price}
                       </h1>
