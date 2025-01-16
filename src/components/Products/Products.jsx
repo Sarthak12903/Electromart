@@ -295,16 +295,16 @@ export default function Products({
       )}
 
       {["KITCHEN", "SMART"].includes(productType) && (
-        <div className=" flex-[10] grid h-fit bg-white grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 shadow-md p-6">
+        <div className=" flex-[10] grid h-fit bg-white sm:-ml-3 gap-0 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:gap-4 shadow-md p-6">
           {filteredProducts.length > 0 ? (
             filteredProducts.map((value) => (
               <Link key={value.number} to={"/productDetail"} className="group">
-                <div className="flex flex-col rounded-md h-fit cursor-pointer p-6 hover:shadow-xl hover:scale-105 transition-all ease-linear duration-200 ">
+                <div className="flex flex-col rounded-md h-fit sm:w-[9rem] md:w-auto cursor-pointer p-6 hover:shadow-xl hover:scale-105 transition-all ease-linear duration-200 ">
                   <div className="w-full ">
                     <img src={value.img} className={value.size} />
                   </div>
                   <div className="leading-tight">
-                    <h4 className="line-clamp-2 group-hover:text-blue-700">
+                    <h4 className="line-clamp-2 sm:text-xs group-hover:text-blue-700">
                       {value.nameDescription}
                     </h4>
                     <p className="text-xs text-slate-700">{value.color}</p>
@@ -323,7 +323,7 @@ export default function Products({
                         {value.price}
                       </h1>
                       {value.originalPrice && (
-                        <p className="flex gap-1 text-green-700 text-sm  font-medium">
+                        <p className="flex gap-1 flex-col md:flex-row justify-start text-green-700 text-sm  font-medium">
                           <span className="flex items-center line-through text-slate-500">
                             <MdOutlineCurrencyRupee />
                             {value.originalPrice}

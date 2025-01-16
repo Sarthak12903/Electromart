@@ -35,7 +35,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="bg-[#324dae] text-white w-full">
+    <nav className="bg-[#324dae] md:px-10 text-white w-full">
       <div className="px-2 sm:px-4 py-2">
         <div className="flex items-center justify-around">
           <Link to={"/"}>
