@@ -41,7 +41,9 @@ export default function ProductList() {
         </button>
         <div
           className={`bg-white absolute w-full z-50 inset-x-0 ${
-            filter ? "flex translate-y-4 " : "-translate-y-2 opacity-0"
+            filter
+              ? "flex translate-y-4 "
+              : "-translate-y-4 h-0 w-0 overflow-hidden opacity-0"
           }  flex-[2] shadow-md rounded-md transition-all ease-linear duration-200 p-3 `}
         >
           <Filters
