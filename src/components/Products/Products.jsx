@@ -295,13 +295,16 @@ export default function Products({
       )}
 
       {["KITCHEN", "SMART"].includes(productType) && (
-        <div className=" flex-[10] grid h-fit bg-white sm:-ml-3 gap-0 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:gap-4 shadow-md p-6">
+        <div className=" flex-[10] grid h-fit bg-white sm:-ml-3 md:ml-3 gap-2 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:gap-4 shadow-md p-6">
           {filteredProducts.length > 0 ? (
             filteredProducts.map((value) => (
               <Link key={value.number} to={"/productDetail"} className="group">
-                <div className="flex flex-col rounded-md h-fit sm:w-[9rem] md:w-auto cursor-pointer p-6 hover:shadow-xl hover:scale-105 transition-all ease-linear duration-200 ">
+                <div className="flex flex-col rounded-md h-fit m-2 md:m-0 sm:w-[8.5rem] md:w-auto cursor-pointer md:p-6 hover:shadow-xl hover:scale-105 transition-all ease-linear duration-200 ">
                   <div className="w-full ">
-                    <img src={value.img} className={value.size} />
+                    <img
+                      src={value.img}
+                      className={`${value.size && value.size}  pr-5 md:-pr-5`}
+                    />
                   </div>
                   <div className="leading-tight">
                     <h4 className="line-clamp-2 sm:text-xs group-hover:text-blue-700">
@@ -310,11 +313,14 @@ export default function Products({
                     <p className="text-xs text-slate-700">{value.color}</p>
                     {value.ratingStar && (
                       <span className="flex items-center text-xs gap-2 text-gray-500 font-semibold mt-1">
-                        <button className="flex gap-1 justify-center items-center text-white text-xs  bg-green-600 px-1 m-1 rounded-sm">
+                        <button className="flex gap-1 justify-center items-center text-white text-[0.6]  bg-green-600 px-1 m-1 rounded-sm">
                           {value.ratingStar}
-                          <FaStar fill="white" className="text-white w-3 h-3" />
+                          <FaStar
+                            fill="white"
+                            className="text-white md:w-3 md:h-3 w-2 h-2"
+                          />
                         </button>{" "}
-                        ({value.ratingNumber})
+                        <span>({value.ratingNumber})</span>
                       </span>
                     )}
                     <div className="flex-[2] flex flex-col lg:flex-row  lg:items-center   ">
@@ -323,7 +329,7 @@ export default function Products({
                         {value.price}
                       </h1>
                       {value.originalPrice && (
-                        <p className="flex gap-1 flex-col md:flex-row justify-start text-green-700 text-sm  font-medium">
+                        <p className="flex gap-1 flex-col md:flex-row justify-start text-green-700 md:text-sm text-[0.6rem]  font-medium">
                           <span className="flex items-center line-through text-slate-500">
                             <MdOutlineCurrencyRupee />
                             {value.originalPrice}

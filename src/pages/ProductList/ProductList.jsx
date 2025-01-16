@@ -10,7 +10,7 @@ export default function ProductList() {
 
   return (
     <div className="flex w-[95%] flex-col lg:flex-row mx-auto mt-4 gap-3">
-      <div className="bg-white flex-[2] shadow-md rounded-md p-3 lg:block sm:hidden">
+      <div className="bg-white flex-[2] shadow-md rounded-md p-3 lg:block hidden">
         <Filters
           minSlider={minSlider}
           setMinSlider={setMinSlider}
@@ -24,7 +24,7 @@ export default function ProductList() {
           setSelectedRatings={setSelectedRatings}
         />
       </div>
-      <div>Filter:</div>
+      <div className="lg:hidden block">Filter:</div>
       <Products
         minSlider={minSlider}
         maxSlider={maxSlider}

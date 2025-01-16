@@ -1049,7 +1049,7 @@ const SMART = [
     bankOffer: "",
     date: "18th Jan",
     cashback: "",
-    offer: "",
+    offer: "20",
     hotDeal: "",
     color: "CS-SU24ZKYWA/CU-SU24ZKYWA, Copper Condenser",
   },
