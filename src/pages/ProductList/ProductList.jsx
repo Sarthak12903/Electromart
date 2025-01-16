@@ -55,6 +55,8 @@ export default function ProductList() {
             selectedDiscounts={selectedDiscounts}
             setSelectedDiscounts={setSelectedDiscounts}
             setSelectedRatings={setSelectedRatings}
+            filter={filter}
+            setFilter={setFilter}
           />
         </div>
       </div>

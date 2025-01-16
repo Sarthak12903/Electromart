@@ -1,4 +1,5 @@
 import { Slider } from "@radix-ui/themes";
+import { IoCloseSharp } from "react-icons/io5";
 
 export default function Filters({
   minSlider,
@@ -11,6 +12,8 @@ export default function Filters({
   setSelectedBrands,
   setSelectedDiscounts,
   setSelectedRatings,
+  filter,
+  setFilter,
 }) {
   const handleCheckboxChange = (setFunction, value) => {
     setFunction((prev) =>
@@ -20,9 +23,20 @@ export default function Filters({
     );
   };
 
+  const handleClose = () => {
+    setFilter(false);
+  };
+
   return (
     <div className="w-full">
-      <h1 className="text-xl font-semibold p-2  border-b-2  ">Filters</h1>
+      <div className="flex justify-between items-center border-b-2">
+        <h1 className="text-xl font-semibold p-2    ">Filters</h1>
+        {filter && (
+          <button onClick={handleClose}>
+            <IoCloseSharp />
+          </button>
+        )}
+      </div>
       <div className="p-4 border-b-2">
         <h3 className="font-semibold">PRICE</h3>
         <Slider
