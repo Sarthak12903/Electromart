@@ -991,7 +991,7 @@ const SMART = [
     nameDescription:
       "Boss Projector PINAKA S15 Android (9000 lm / Wireless / Remote Controller) Portable Projector  (White)",
 
-    size: "w-60 mb-3 mx-auto",
+    size: "w-60 mb-3 mx-auto ",
     img: "/ProductList/Boss.png",
     price: "1,90,000",
     originalPrice: "5,99,999",

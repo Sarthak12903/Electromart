@@ -295,23 +295,25 @@ export default function Products({
       )}
 
       {["KITCHEN", "SMART"].includes(productType) && (
-        <div className=" flex-[10] grid h-fit bg-white  gap-2 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:gap-4 shadow-md p-6">
+        <div className=" flex-[10] grid h-fit bg-white   grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  shadow-md p-6">
           {filteredProducts.length > 0 ? (
             filteredProducts.map((value) => (
               <Link
                 key={value.number}
                 to={"/productDetail"}
-                className="group sm:w-[8.8rem] sm:-mx-2 md:mx-2   md:w-auto "
+                className="group sm:w-[9rem] sm:-mx-3 md:mx-0 md:w-auto "
               >
-                <div className="flex flex-col rounded-md h-fit m-2 md:m-0 sm:w-[8.5rem] md:w-auto cursor-pointer p-2 md:p-6 hover:shadow-xl hover:scale-105 transition-all ease-linear duration-200 ">
+                <div className="flex flex-col rounded-md h-fit m-2 md:m-0 sm:w-[9.5rem] md:w-auto cursor-pointer p-2 md:p-6 hover:shadow-xl hover:scale-105 transition-all ease-linear duration-200 ">
                   <div className="w-full ">
                     <img
                       src={value.img}
-                      className={`${value.size && value.size}  pr-5 md:-pr-5`}
+                      className={`${
+                        value.size && value.size
+                      } sm:-translate-x-4 lg:translate-x-0`}
                     />
                   </div>
-                  <div className="leading-tight">
-                    <h4 className="line-clamp-2 sm:text-xs md:text-sm group-hover:text-blue-700">
+                  <div className="leading-tight sm:mr-4 md:mr-0">
+                    <h4 className="line-clamp-2 sm:text-xs  md:text-sm group-hover:text-blue-700">
                       {value.nameDescription}
                     </h4>
                     <p className="text-xs text-slate-700 line-clamp-1">
