@@ -84,7 +84,7 @@ export default function ProductDash() {
           <img src="/DashProduct/SmartHome.png" alt="AC" className="w-36" />
           <div className="flex flex-col justify-center items-center">
             <h2 className="font-bold text-center">SMART HOME</h2>
-            <p className="text-slate-500 text-sm">5 PRODUCTS</p>
+            <p className="text-slate-500 text-sm">8 PRODUCTS</p>
           </div>
         </div>
       </Link>

@@ -1,7 +1,17 @@
 import { FaStar } from "react-icons/fa";
 import { MdOutlineCurrencyRupee } from "react-icons/md";
-import { AC, TV, Gadgets, HOME, KITCHEN, PC } from "../../Constants/Contants";
+import {
+  AC,
+  TV,
+  Gadgets,
+  HOME,
+  KITCHEN,
+  PC,
+  REFRIGERATOR,
+  SMART,
+} from "../../Constants/Contants";
 import { Link, useLocation } from "react-router-dom";
+
 export default function Products({
   minSlider,
   maxSlider,
@@ -61,6 +71,24 @@ export default function Products({
         return price >= minSlider && price <= maxSlider;
       }
     });
+  } else if (productType === "REFRIGERATOR") {
+    filteredProducts = REFRIGERATOR.filter((value) => {
+      const price = parseInt(value.price.replace(/,/g, ""), 10);
+      if (maxSlider === 100000) {
+        return price >= minSlider;
+      } else {
+        return price >= minSlider && price <= maxSlider;
+      }
+    });
+  } else if (productType === "SMART") {
+    filteredProducts = SMART.filter((value) => {
+      const price = parseInt(value.price.replace(/,/g, ""), 10);
+      if (maxSlider === 100000) {
+        return price >= minSlider;
+      } else {
+        return price >= minSlider && price <= maxSlider;
+      }
+    });
   }
 
   return (
@@ -72,7 +100,6 @@ export default function Products({
         "Gadgets",
         "PC",
         "REFRIGERATOR",
-        "SMART",
         "iphone",
         "airpods",
         "watch",
@@ -205,19 +232,35 @@ export default function Products({
                         </li>
                       </ul>
                     )}
+                    {productType === "REFRIGERATOR" && (
+                      <ul className="list-disc p-4 text-sm ">
+                        <li>{value.compressor} Compressor</li>
+                        <li>{value.stabilizer}</li>
+                        <li>
+                          {value.productWarranty
+                            ? `${value.productWarranty} Warranty On Product`
+                            : ""}
+                          {value.compressorWarranty
+                            ? ` and ${value.compressorWarranty}  Carry-in Warranty `
+                            : ""}
+                        </li>
+                      </ul>
+                    )}
                   </div>
                   <div className="flex-[2] flex flex-col   py-6 gap-2">
                     <h1 className="flex gap-1 items-center text-3xl font-bold">
                       <MdOutlineCurrencyRupee />
                       {value.price}
                     </h1>
-                    <p className="flex gap-1 text-green-700 font-medium">
-                      <span className="flex items-center line-through text-black">
-                        <MdOutlineCurrencyRupee />
-                        {value.originalPrice}
-                      </span>
-                      {value.offer}% off
-                    </p>
+                    {value.originalPrice && (
+                      <p className="flex gap-1 text-green-700 font-medium">
+                        <span className="flex items-center line-through text-black">
+                          <MdOutlineCurrencyRupee />
+                          {value.originalPrice}
+                        </span>
+                        {value.offer}% off
+                      </p>
+                    )}
                     <p className="text-xs">
                       Free Delivery by{" "}
                       <span className="font-bold">{value.date}</span>
@@ -251,7 +294,7 @@ export default function Products({
         </div>
       )}
 
-      {productType === "KITCHEN" && (
+      {["KITCHEN", "SMART"].includes(productType) && (
         <div className=" flex-[10] grid bg-white grid-cols-4 gap-4 shadow-md p-6">
           {filteredProducts.length > 0 ? (
             filteredProducts.map((value) => (
@@ -265,25 +308,29 @@ export default function Products({
                       {value.nameDescription}
                     </h4>
                     <p className="text-xs text-slate-700">{value.color}</p>
-                    <span className="flex items-center text-xs gap-2 text-gray-500 font-semibold mt-1">
-                      <button className="flex gap-1 justify-center items-center text-white text-xs  bg-green-600 px-1 m-1 rounded-sm">
-                        {value.ratingStar}
-                        <FaStar fill="white" className="text-white w-3 h-3" />
-                      </button>{" "}
-                      ({value.ratingNumber})
-                    </span>
+                    {value.ratingStar && (
+                      <span className="flex items-center text-xs gap-2 text-gray-500 font-semibold mt-1">
+                        <button className="flex gap-1 justify-center items-center text-white text-xs  bg-green-600 px-1 m-1 rounded-sm">
+                          {value.ratingStar}
+                          <FaStar fill="white" className="text-white w-3 h-3" />
+                        </button>{" "}
+                        ({value.ratingNumber})
+                      </span>
+                    )}
                     <div className="flex-[2] flex  items-center   gap-2">
                       <h1 className="flex gap-1 items-center text-lg font-bold">
                         <MdOutlineCurrencyRupee />
                         {value.price}
                       </h1>
-                      <p className="flex gap-1 text-green-700 text-sm font-medium">
-                        <span className="flex items-center line-through text-slate-500">
-                          <MdOutlineCurrencyRupee />
-                          {value.originalPrice}
-                        </span>
-                        <span className="font-bold"> {value.offer}% off</span>
-                      </p>
+                      {value.originalPrice && (
+                        <p className="flex gap-1 text-green-700 text-sm  font-medium">
+                          <span className="flex items-center line-through text-slate-500">
+                            <MdOutlineCurrencyRupee />
+                            {value.originalPrice}
+                          </span>
+                          <span className="font-bold"> {value.offer}% off</span>
+                        </p>
+                      )}
                     </div>
                     <div className=" flex flex-col gap-2">
                       {" "}
@@ -306,6 +353,12 @@ export default function Products({
                       {value.bankOffer === "yes" && (
                         <p className="text-xs text-green-700 rounded-md  font-bold w-fit">
                           Bank Offer
+                        </p>
+                      )}
+                      {value.date && (
+                        <p className="text-xs">
+                          Free Delivery by{" "}
+                          <span className="font-bold">{value.date}</span>
                         </p>
                       )}
                     </div>
