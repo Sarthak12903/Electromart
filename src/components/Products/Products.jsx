@@ -106,39 +106,43 @@ export default function Products({
         "s24",
         "buds3",
       ].includes(productType) && (
-        <div className="flex flex-[10] bg-white gap-1 flex-col shadow-md pb-6">
+        <div className="lg:flex flex-[10] sm:grid md:grid-cols-3 sm:grid-cols-2 bg-white lg:gap-1 lg:flex-col shadow-md pb-6">
           {filteredProducts.length > 0 ? (
             filteredProducts.map((value) => (
               <Link
                 key={value.number}
-                className="group m-6"
+                className="group lg:m-6"
                 to={"/productDetail"}
               >
                 {" "}
-                <div className="bg-white h-60  flex gap-2 rounded-md p-6">
-                  <div className="w-64 h-full flex justify-center   flex-[2] items-center">
+                <div className="bg-white h-fit  flex flex-col lg:flex-row gap-2 rounded-md p-6">
+                  <div className="lg:w-64 p-2 h-full flex justify-center   flex-[2] items-center">
                     <img
                       src={value.img}
                       alt={value.name}
-                      className={value.size && value.size}
+                      className={`${value.size && value.size} `}
                     />
                   </div>
-                  <div className="p-3 flex-[6] flex flex-col pt-4">
+                  <div className="lg:p-3 flex-[6] flex flex-col pt-4">
                     <div>
-                      <h1 className="text-lg group-hover:text-blue-700 font-semibold tracking-tight text-black line-clamp-2">
+                      <h1 className="lg:text-lg w-full  sm:text-sm group-hover:text-blue-700 font-semibold tracking-tight text-black line-clamp-2">
                         {value.nameDescription}
                       </h1>
-                      <span className="flex text-sm gap-2 text-gray-500 font-semibold mt-1">
-                        <button className="flex gap-1 justify-center items-center text-white text-xs  bg-green-600 px-1 m-1 rounded-sm">
+                      <span className="flex text-xs gap-2 text-gray-500 font-semibold mt-1">
+                        <button className="flex gap-1 justify-center items-center text-white text-xs  bg-green-600 lg:px-1 m-1 rounded-sm">
                           {value.ratingStar}
                           <FaStar fill="white" className="text-white w-3 h-3" />
                         </button>{" "}
-                        {value.ratingNumber} Ratings & {value.reviewNumber}{" "}
-                        Reviews
+                        <span className="">
+                          {value.ratingNumber} Ratings{" "}
+                          <span className="sm:hidden lg:block">
+                            & {value.reviewNumber} Reviews
+                          </span>
+                        </span>
                       </span>
                     </div>
                     {productType === "AC" && (
-                      <ul className="list-disc p-4 text-sm ">
+                      <ul className="list-disc p-4 text-sm hidden lg:block ">
                         <li>Annual Power Usage: {value.powerUsage} W</li>
                         <li>Room Size: {value.roomSize}</li>
                         <li>
@@ -156,7 +160,7 @@ export default function Products({
                       </ul>
                     )}
                     {productType === "TV" && (
-                      <ul className="list-disc p-4 text-sm ">
+                      <ul className="list-disc p-4 text-sm hidden lg:block ">
                         <li>Operating System: {value.operatingSystem} </li>
                         <li> {value.pixels}</li>
                         <li>Launch Year: {value.launch}</li>
@@ -177,7 +181,7 @@ export default function Products({
                       </ul>
                     )}
                     {productType === "Gadgets" && (
-                      <ul className="list-disc p-4 text-sm ">
+                      <ul className="list-disc p-4 text-sm hidden lg:block ">
                         <li>
                           {value.ram && `${value.ram} RAM |`} {value.rom} ROM
                           {value.expandable &&
@@ -200,7 +204,7 @@ export default function Products({
                       </ul>
                     )}
                     {productType === "HOME" && (
-                      <ul className="list-disc p-4 text-sm ">
+                      <ul className="list-disc p-4 text-sm hidden lg:block ">
                         <li>{value.rpm} RPM MAX Speed</li>
                         <li>{value.star} Star Rating</li>
                         {value.builtinHeater && <li>With in Built Heater</li>}
@@ -216,7 +220,7 @@ export default function Products({
                       </ul>
                     )}
                     {productType === "PC" && (
-                      <ul className="list-disc p-4 text-sm ">
+                      <ul className="list-disc p-4 text-sm  hidden lg:block">
                         <li>{value.processor}</li>
                         <li>{value.ram}</li>
                         <li>{value.operatingSystem} Operating System</li>
@@ -233,7 +237,7 @@ export default function Products({
                       </ul>
                     )}
                     {productType === "REFRIGERATOR" && (
-                      <ul className="list-disc p-4 text-sm ">
+                      <ul className="list-disc p-4 text-sm hidden lg:block">
                         <li>{value.compressor} Compressor</li>
                         <li>{value.stabilizer}</li>
                         <li>
@@ -247,18 +251,18 @@ export default function Products({
                       </ul>
                     )}
                   </div>
-                  <div className="flex-[2] flex flex-col   py-6 gap-2">
-                    <h1 className="flex gap-1 items-center text-3xl font-bold">
+                  <div className="flex-[2] flex flex-col -mt-3 lg:mt-0 lg:py-6 lg:gap-2">
+                    <h1 className="flex gap-1 items-center sm:text-lg lg:text-3xl font-bold">
                       <MdOutlineCurrencyRupee />
                       {value.price}
                     </h1>
                     {value.originalPrice && (
-                      <p className="flex gap-1 text-green-700 font-medium">
+                      <p className="flex gap-1 flex-col md:flex-row text-xs text-green-700 font-medium">
                         <span className="flex items-center line-through text-black">
                           <MdOutlineCurrencyRupee />
                           {value.originalPrice}
                         </span>
-                        {value.offer}% off
+                        <span>{value.offer}% off</span>
                       </p>
                     )}
                     <p className="text-xs">
@@ -266,19 +270,19 @@ export default function Products({
                       <span className="font-bold">{value.date}</span>
                     </p>
                     {value.hotDeal === "yes" && (
-                      <p className="text-sm text-green-700 rounded-md px-2 py-1 bg-green-100 w-fit">
+                      <p className="lg:text-sm sm:text-xs text-green-700 sm:rounded-sm lg:rounded-md lg:px-2 lg:py-1 sm:px-1  bg-green-100 w-fit">
                         Hot Deal
                       </p>
                     )}
                     {value.cashback && (
-                      <p className="flex items-center text-sm">
+                      <p className="flex items-center text-xs flex-wrap lg:text-sm">
                         Upto <MdOutlineCurrencyRupee />{" "}
                         <span className="font-bold">{value.cashback} </span> Off
                         on Exchange
                       </p>
                     )}
                     {value.bankOffer === "yes" && (
-                      <p className="text-sm text-green-700 rounded-md  font-bold w-fit">
+                      <p className="lg:text-sm sm:text-xs text-green-700 rounded-md  font-bold w-fit">
                         Bank Offer
                       </p>
                     )}
