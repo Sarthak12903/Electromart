@@ -299,7 +299,7 @@ export default function Products({
           {filteredProducts.length > 0 ? (
             filteredProducts.map((value) => (
               <Link key={value.number} to={"/productDetail"} className="group">
-                <div className="flex flex-col rounded-md h-fit m-2 md:m-0 sm:w-[8.5rem] md:w-auto cursor-pointer md:p-6 hover:shadow-xl hover:scale-105 transition-all ease-linear duration-200 ">
+                <div className="flex flex-col rounded-md h-fit m-2 md:m-0 sm:w-[8.5rem] md:w-auto cursor-pointer p-2 md:p-6 hover:shadow-xl hover:scale-105 transition-all ease-linear duration-200 ">
                   <div className="w-full ">
                     <img
                       src={value.img}
