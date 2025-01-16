@@ -295,7 +295,7 @@ export default function Products({
       )}
 
       {["KITCHEN", "SMART"].includes(productType) && (
-        <div className=" flex-[10] grid h-fit bg-white grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 shadow-md p-6">
+        <div className=" flex-[10] grid h-fit bg-white grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 shadow-md p-6">
           {filteredProducts.length > 0 ? (
             filteredProducts.map((value) => (
               <Link key={value.number} to={"/productDetail"} className="group">
