@@ -1041,7 +1041,7 @@ const SMART = [
       "Panasonic 7 in 1 Convertible with True AI Mode 2 Ton 3 Star Split Inverter AC with Wi-fi Connect - White  (CS-SU24ZKYWA/CU-SU24ZKYWA, Copper Condenser)",
     ratingStar: 4.1,
     ratingNumber: "25,318",
-    size: "w-70 py-12 mb-2 mx-auto",
+    size: "w-70  py-12 md:mb-2 sm:mb-8 mx-auto",
     reviewNumber: "1,700",
     img: "/ProductList/Panasonic.png",
     price: "50,990",

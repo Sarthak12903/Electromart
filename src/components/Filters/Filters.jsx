@@ -21,7 +21,7 @@ export default function Filters({
   };
 
   return (
-    <div>
+    <div className="w-full">
       <h1 className="text-xl font-semibold p-2  border-b-2  ">Filters</h1>
       <div className="p-4 border-b-2">
         <h3 className="font-semibold">PRICE</h3>

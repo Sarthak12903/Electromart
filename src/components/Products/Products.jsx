@@ -310,7 +310,9 @@ export default function Products({
                     <h4 className="line-clamp-2 sm:text-xs group-hover:text-blue-700">
                       {value.nameDescription}
                     </h4>
-                    <p className="text-xs text-slate-700">{value.color}</p>
+                    <p className="text-xs text-slate-700 line-clamp-1">
+                      {value.color}
+                    </p>
                     {value.ratingStar && (
                       <span className="flex items-center text-xs gap-2 text-gray-500 font-semibold mt-1">
                         <button className="flex gap-1 justify-center items-center text-white text-[0.6]  bg-green-600 px-1 m-1 rounded-sm">
