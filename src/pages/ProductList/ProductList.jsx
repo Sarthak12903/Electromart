@@ -11,7 +11,11 @@ export default function ProductList() {
 
   return (
     <div className="flex w-[95%]  mx-auto mt-4 gap-3">
-      <div className={`bg-white sm:w-12 lg:flex-[2] shadow-md rounded-md p-3`}>
+      <div
+        className={`bg-white ${
+          filter ? " w-[17rem] h-screen absolute z-30 " : "sm:w-12"
+        } lg:flex-[2] shadow-md rounded-md p-3`}
+      >
         <Filters
           minSlider={minSlider}
           setMinSlider={setMinSlider}

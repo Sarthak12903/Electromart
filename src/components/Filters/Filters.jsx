@@ -37,9 +37,7 @@ export default function Filters({
         <IoMenu />
       </button>
       <div
-        className={` ${
-          filter ? "fixed sm:block  " : "sm:hidden static "
-        }  lg:block`}
+        className={` ${filter ? " sm:block  " : "sm:hidden static "}  lg:block`}
       >
         <h1 className="text-xl font-semibold p-2  border-b-2  ">Filters</h1>
         <div className="p-4 border-b-2">
