@@ -376,7 +376,7 @@ const HOME = [
     nameDescription:
       "SAMSUNG 7.5 Kg Semi Automatic Top Load Washing Machine Grey, Red  (WT75B3200RR/TL)",
     ratingStar: 4.4,
-    size: "w-40 mt-6",
+    size: "w-40 ",
     ratingNumber: "38,458",
     reviewNumber: "2,688",
     img: "/ProductList/SamWash.png",
@@ -397,7 +397,7 @@ const HOME = [
     name: "Reliance",
     nameDescription: "Reliance 7.5 kg Washer only Red, White  (RGT750WR)",
     ratingStar: 4.7,
-    size: "w-36 mt-6",
+    size: "w-36 ",
     ratingNumber: "24",
     reviewNumber: "2",
     img: "/ProductList/Reliance.png",
@@ -419,7 +419,7 @@ const HOME = [
     nameDescription:
       "IFB 7 kg Powered by AI, 5 Star, 4 years Comprehensive Warranty with 2x Steam Cycle Fully Automatic Front Load Washing Machine with In-built Heater Brown  (DIVA AQUA MXS 7010)",
     ratingStar: 4.4,
-    size: "w-36 mt-6 ",
+    size: "w-36  ",
     ratingNumber: "85,452",
     reviewNumber: "8,509",
     img: "/ProductList/IFB.png",
@@ -442,7 +442,7 @@ const HOME = [
     nameDescription:
       "SAMSUNG 12 kg 5star, AI Ecobubble, Super Speed, Wi-Fi, Hygiene Steam,Digital Inverter Fully Automatic Front Load Washing Machine with In-built Heater Black, Grey  (WW12DG5B24AXTL)",
     ratingStar: 4.4,
-    size: "w-44 mt-6",
+    size: "w-44 ",
     ratingNumber: "15,458",
     reviewNumber: "1,163",
     img: "/ProductList/SamWash2.png",

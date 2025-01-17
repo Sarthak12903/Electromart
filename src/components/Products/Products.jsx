@@ -115,7 +115,7 @@ export default function Products({
                 to={"/productDetail"}
               >
                 {" "}
-                <div className="bg-white h-fit  flex flex-col lg:flex-row gap-2 rounded-md p-6">
+                <div className="bg-white h-fit  flex flex-col lg:flex-row gap-2 lg:gap-0 rounded-md p-6">
                   <div className="lg:w-64 p-2 h-full flex justify-center   flex-[2] items-center">
                     <img
                       src={value.img}
@@ -133,10 +133,10 @@ export default function Products({
                           {value.ratingStar}
                           <FaStar fill="white" className="text-white w-3 h-3" />
                         </button>{" "}
-                        <span className="">
-                          {value.ratingNumber} Ratings{" "}
+                        <span className=" flex items-center gap-1">
+                          {value.ratingNumber} Ratings{"  "}
                           <span className="sm:hidden lg:block">
-                            & {value.reviewNumber} Reviews
+                            {`  & ${value.reviewNumber} Reviews`}
                           </span>
                         </span>
                       </span>
