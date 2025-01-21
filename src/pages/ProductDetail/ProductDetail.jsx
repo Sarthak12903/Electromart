@@ -70,10 +70,12 @@ export default function ProductDetail() {
     <>
       <div className="w-[80%]   bg-white mx-auto p-4 flex">
         <div className="flex-[5] flex justify-center items-center py-20 relative">
-          <div className="relative w-96">
+          <div className="relative w-96 flex justify-center">
             <img
               src={product.img || "/placeholder.svg"}
-              className="w-full h-auto cursor-crosshair"
+              className={` h-auto  cursor-crosshair ${
+                productType === "REFRIGERATOR" ? "w-48 " : "w-full"
+              }`}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
               onMouseMove={handleMouseMove}
@@ -96,7 +98,7 @@ export default function ProductDetail() {
           </div>
         </div>
         <div className="flex-[7] p-10 flex flex-col ">
-          <h1 className="text-2xl mb-2 font-semibold">
+          <h1 className="text-2xl mb-2 font-semibold select-text">
             {product.nameDescription}
           </h1>
           <span className="flex text-sm gap-2 items-center text-gray-500 font-semibold my-2">
