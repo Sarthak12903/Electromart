@@ -70,7 +70,7 @@ export default function ProductDetail() {
     <>
       <div className="w-[80%] flex-wrap flex-col md:flex-row sm:m-0  bg-white mx-auto p-4 flex">
         <div className="flex-[5] flex justify-center items-center py-10 md:py-20 relative">
-          <div className="relative  flex justify-center">
+          <div className="relative w-full flex justify-center">
             <img
               src={product.img || "/placeholder.svg"}
               className={`  cursor-crosshair ${
