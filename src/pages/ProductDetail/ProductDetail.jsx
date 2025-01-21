@@ -10,12 +10,40 @@ import {
 } from "@/Constants/Contants";
 import { MdOutlineCurrencyRupee } from "react-icons/md";
 import { FaStar } from "react-icons/fa";
+import { useState } from "react";
 
 import { useParams } from "react-router-dom";
 
 export default function ProductDetail() {
   const { number, productType } = useParams();
+  const [zoom, setZoom] = useState(false);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [containerRect, setContainerRect] = useState(null);
 
+  const handleMouseMove = (e) => {
+    if (!containerRect) return;
+
+    const rect = containerRect;
+    const x = (e.clientX - rect.left) / rect.width;
+    const y = (e.clientY - rect.top) / rect.height;
+
+    // Ensure values stay within 0-100 range
+    const boundedX = Math.max(0, Math.min(100, x * 100));
+    const boundedY = Math.max(0, Math.min(100, y * 100));
+
+    setPosition({ x: boundedX, y: boundedY });
+  };
+
+  const handleMouseEnter = (e) => {
+    setZoom(true);
+    // Store the container dimensions when mouse enters
+    setContainerRect(e.target.getBoundingClientRect());
+  };
+
+  const handleMouseLeave = () => {
+    setZoom(false);
+    setContainerRect(null);
+  };
   const dataMap = {
     HOME: HOME,
     TV: TV,
@@ -41,8 +69,31 @@ export default function ProductDetail() {
   return (
     <>
       <div className="w-[80%] bg-white mx-auto p-4 flex">
-        <div className="flex-[5] flex justify-center items-center  py-20">
-          <img src={product.img} className="w-96" />
+        <div className="flex-[5] flex justify-center items-center py-20 relative">
+          <div className="relative w-96">
+            <img
+              src={product.img || "/placeholder.svg"}
+              className="w-full h-auto cursor-crosshair"
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+              onMouseMove={handleMouseMove}
+              alt={product.nameDescription}
+            />
+            {zoom && (
+              <div
+                className="fixed left-2/3 top-20 w-[60rem] h-[80%] rounded-xl shadow-2xl bg-white  "
+                style={{
+                  backgroundImage: `url(${product.img})`,
+                  backgroundSize: "200%",
+                  backgroundPosition: `${position.x}% ${position.y}%`,
+                  transform: "translateX(-50%)",
+                  zIndex: 50,
+
+                  border: "1px solid #e5e7eb",
+                }}
+              />
+            )}
+          </div>
         </div>
         <div className="flex-[7] p-10">
           <h1 className="text-2xl mb-2 font-semibold">
