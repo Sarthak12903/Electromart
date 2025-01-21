@@ -24,7 +24,7 @@ export default function App() {
               <Route path="/" element={<Dashboard />} />
               <Route path="/product" element={<ProductList />} />
               <Route
-                path="/product/:productType/:name"
+                path="/product/:productType/:number"
                 element={<ProductDetail />}
               />
             </Routes>

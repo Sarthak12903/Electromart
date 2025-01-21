@@ -114,7 +114,7 @@ export default function Products({
               <Link
                 key={value.number}
                 className="group lg:m-6"
-                to={`/product/${productType}/${value.nameDescription}`}
+                to={`/product/${productType}/${value.number}`}
                 onClick={() =>
                   handleClick(
                     value.number,
@@ -315,7 +315,7 @@ export default function Products({
             filteredProducts.map((value) => (
               <Link
                 key={value.number}
-                to={`/product/${value.nameDescription}`}
+                to={`/product/${productType}/${value.number}`}
                 className="group sm:w-[9.5rem]  md:mx-0 md:w-auto "
               >
                 <div className="flex flex-col rounded-md h-fit m-2  md:m-0 sm:w-[10.4rem] md:w-auto cursor-pointer p-2 md:p-6 md:hover:shadow-xl md:hover:scale-105 transition-all ease-linear duration-200 ">
