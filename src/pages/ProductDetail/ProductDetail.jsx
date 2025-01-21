@@ -13,7 +13,7 @@ import { FaStar } from "react-icons/fa";
 import { useState } from "react";
 
 import { useParams } from "react-router-dom";
-
+import { TiShoppingCart } from "react-icons/ti";
 export default function ProductDetail() {
   const { number, productType } = useParams();
   const [zoom, setZoom] = useState(false);
@@ -68,7 +68,7 @@ export default function ProductDetail() {
   }
   return (
     <>
-      <div className="w-[80%] bg-white mx-auto p-4 flex">
+      <div className="w-[80%]   bg-white mx-auto p-4 flex">
         <div className="flex-[5] flex justify-center items-center py-20 relative">
           <div className="relative w-96">
             <img
@@ -81,7 +81,7 @@ export default function ProductDetail() {
             />
             {zoom && (
               <div
-                className="fixed left-2/3 top-20 w-[60rem] h-[80%] rounded-xl shadow-2xl bg-white  "
+                className="hidden lg:block fixed left-2/3 top-20 w-[60rem] h-[80%] rounded-xl shadow-2xl bg-white  "
                 style={{
                   backgroundImage: `url(${product.img})`,
                   backgroundSize: "200%",
@@ -95,7 +95,7 @@ export default function ProductDetail() {
             )}
           </div>
         </div>
-        <div className="flex-[7] p-10">
+        <div className="flex-[7] p-10 flex flex-col justify-center">
           <h1 className="text-2xl mb-2 font-semibold">
             {product.nameDescription}
           </h1>
@@ -295,6 +295,14 @@ export default function ProductDetail() {
                 </ul>
               )}
             </div>
+          </div>
+          <div className="flex items-center mt-2 gap-4">
+            <button className="flex justify-center items-center gap-1 bg-yellow-400 hover:scale-95 transition-all ease-linear duration-200 hover:bg-yellow-600 px-6 py-4 rounded-lg text-white font-bold">
+              Add To Cart <TiShoppingCart className="w-6 h-6" />
+            </button>
+            <button className="bg-green-500 px-8 py-4 rounded-lg transition-all ease-linear duration-200 hover:scale-95 hover:bg-green-700 text-white font-bold">
+              Buy Now
+            </button>
           </div>
         </div>
       </div>
