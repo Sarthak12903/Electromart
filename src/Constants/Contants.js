@@ -873,7 +873,7 @@ const REFRIGERATOR = [
     number: 3,
     name: "samsung",
     nameDescription:
-      "SAMSUNG 236 L Frost Free Double Door 3 Star Convertible Refrigerator with Digital Inverter and Display  (Black DOI, RT28C3733B1/HL)",
+      "SAMSUNG 236 L Frost Free Double Door 3 Star Convertible Refrigerator with Digital Inverter and Display (Black DOI, RT28C3733B1/HL)",
     ratingStar: 4.4,
     ratingNumber: "19,545",
     size: "w-24",

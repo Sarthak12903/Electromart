@@ -7,8 +7,7 @@ import useScrollToTop from "./Hooks/Scroll";
 import "@radix-ui/themes/styles.css";
 import { Theme } from "@radix-ui/themes";
 import ProductDetail from "./pages/ProductDetail/ProductDetail";
-import { store } from "./store/store";
-import { Provider } from "react-redux";
+
 const ScrollToTopWrapper = ({ children }) => {
   useScrollToTop();
   return children;
@@ -16,23 +15,23 @@ const ScrollToTopWrapper = ({ children }) => {
 
 export default function App() {
   return (
-    <Provider store={store}>
-      {" "}
-      <Theme>
-        <div className="flex flex-col bg-slate-100  justify-center items-center select-none">
-          <BrowserRouter>
-            <ScrollToTopWrapper>
-              <Navbar />
-              <Routes>
-                <Route path="/" element={<Dashboard />} />
-                <Route path="/product" element={<ProductList />} />
-                <Route path="/productDetail" element={<ProductDetail />} />
-              </Routes>
-              <Footer />
-            </ScrollToTopWrapper>
-          </BrowserRouter>
-        </div>
-      </Theme>
-    </Provider>
+    <Theme>
+      <div className="flex flex-col bg-slate-100  justify-center items-center select-none">
+        <BrowserRouter>
+          <ScrollToTopWrapper>
+            <Navbar />
+            <Routes>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/product" element={<ProductList />} />
+              <Route
+                path="/product/:productType/:name"
+                element={<ProductDetail />}
+              />
+            </Routes>
+            <Footer />
+          </ScrollToTopWrapper>
+        </BrowserRouter>
+      </div>
+    </Theme>
   );
 }
