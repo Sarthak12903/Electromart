@@ -95,11 +95,11 @@ export default function ProductDetail() {
             )}
           </div>
         </div>
-        <div className="flex-[7] p-10 flex flex-col justify-center">
+        <div className="flex-[7] p-10 flex flex-col ">
           <h1 className="text-2xl mb-2 font-semibold">
             {product.nameDescription}
           </h1>
-          <span className="flex text-sm gap-2 text-gray-500 font-semibold my-2">
+          <span className="flex text-sm gap-2 items-center text-gray-500 font-semibold my-2">
             <button className="flex gap-1 justify-center items-center text-white text-xs  bg-green-600 lg:px-1 m-1 rounded-sm">
               {product.ratingStar}
               <FaStar fill="white" className="text-white w-3 h-3" />
