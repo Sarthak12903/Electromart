@@ -68,12 +68,12 @@ export default function ProductDetail() {
   }
   return (
     <>
-      <div className="w-[80%]   bg-white mx-auto p-4 flex">
-        <div className="flex-[5] flex justify-center items-center py-20 relative">
-          <div className="relative w-96 flex justify-center">
+      <div className="w-[80%] flex-wrap flex-col md:flex-row sm:m-0  bg-white mx-auto p-4 flex">
+        <div className="flex-[5] flex justify-center items-center py-10 md:py-20 relative">
+          <div className="relative  flex justify-center">
             <img
               src={product.img || "/placeholder.svg"}
-              className={` h-auto  cursor-crosshair ${
+              className={`  cursor-crosshair ${
                 productType === "REFRIGERATOR" ? "w-48 " : "w-full"
               }`}
               onMouseEnter={handleMouseEnter}
@@ -97,8 +97,8 @@ export default function ProductDetail() {
             )}
           </div>
         </div>
-        <div className="flex-[7] p-10 flex flex-col ">
-          <h1 className="text-2xl mb-2 font-semibold select-text">
+        <div className="flex-[7]  flex md:p-10 flex-col ">
+          <h1 className="md:text-2xl w-full sm:text-lg mb-2  sm:line-clamp-2 lg:line-clamp-none font-semibold select-text">
             {product.nameDescription}
           </h1>
           <span className="flex text-sm gap-2 items-center text-gray-500 font-semibold my-2">
@@ -125,12 +125,20 @@ export default function ProductDetail() {
                 <span>{product.offer}% off</span>
               </p>
             </div>
+            <div className="flex items-center sm:flex md:hidden   text-xs lg:text-lg mt-2 gap-4">
+              <button className="flex justify-center  items-center gap-1 bg-yellow-400 hover:scale-95 transition-all ease-linear duration-200 hover:bg-yellow-600 px-2 py-2 md:px-6 md:py-4 rounded-lg text-white font-bold">
+                Add To Cart <TiShoppingCart className="w-4 h-4 lg:w-6 lg:h-6" />
+              </button>
+              <button className="bg-green-500 px-2 py-2 md:px-8 md:py-4 rounded-lg transition-all ease-linear duration-200 hover:scale-95 hover:bg-green-700 text-white font-bold">
+                Buy Now
+              </button>
+            </div>
             <div>
               <h1 className="text-xl mt-4 mb-2 font-semibold">
                 Key Features:{" "}
               </h1>
               {productType === "AC" && (
-                <ul className="list-disc  pl-4 leading-8 font-medium  text-sm hidden lg:block ">
+                <ul className="list-disc  pl-4 leading-8 font-medium  text-sm  ">
                   <li>Annual Power Usage: {product.powerUsage} W</li>
                   <li>Room Size: {product.roomSize}</li>
                   <li>
@@ -148,7 +156,7 @@ export default function ProductDetail() {
                 </ul>
               )}
               {productType === "TV" && (
-                <ul className="list-disc pl-4 leading-8 font-medium  text-sm hidden lg:block ">
+                <ul className="list-disc pl-4 leading-8 font-medium  text-sm  ">
                   <li>Operating System: {product.operatingSystem} </li>
                   <li> {product.pixels}</li>
                   <li>Launch Year: {product.launch}</li>
@@ -169,7 +177,7 @@ export default function ProductDetail() {
                 </ul>
               )}
               {productType === "Gadgets" && (
-                <ul className="list-disc pl-4 leading-8 font-medium  text-sm hidden lg:block ">
+                <ul className="list-disc pl-4 leading-8 font-medium  text-sm  ">
                   <li>
                     {product.ram && `${product.ram} RAM |`} {product.rom} ROM
                     {product.expandable &&
@@ -192,7 +200,7 @@ export default function ProductDetail() {
                 </ul>
               )}
               {productType === "HOME" && (
-                <ul className="list-disc pl-4 leading-8 font-medium  text-sm hidden lg:block ">
+                <ul className="list-disc pl-4 leading-8 font-medium  text-sm  ">
                   <li>{product.rpm} RPM MAX Speed</li>
                   <li>{product.star} Star Rating</li>
                   {product.builtinHeater && <li>With in Built Heater</li>}
@@ -208,7 +216,7 @@ export default function ProductDetail() {
                 </ul>
               )}
               {productType === "PC" && (
-                <ul className="list-disc pl-4 leading-8 font-medium  text-sm  hidden lg:block">
+                <ul className="list-disc pl-4 leading-8 font-medium  text-sm ">
                   <li>{product.processor}</li>
                   <li>{product.ram}</li>
                   <li>{product.operatingSystem} Operating System</li>
@@ -225,7 +233,7 @@ export default function ProductDetail() {
                 </ul>
               )}
               {productType === "REFRIGERATOR" && (
-                <ul className="list-disc pl-4 leading-8 font-medium text-sm hidden lg:block">
+                <ul className="list-disc pl-4 leading-8 font-medium text-sm ">
                   <li>{product.compressor} Compressor</li>
                   <li>{product.stabilizer}</li>
                   <li>
@@ -239,7 +247,7 @@ export default function ProductDetail() {
                 </ul>
               )}
               {productType === "KITCHEN" && (
-                <ul className="list-disc pl-4 w-[40rem] text-justify leading-8 font-medium text-sm hidden lg:block">
+                <ul className="list-disc pl-4 w-[40rem] text-justify leading-8 font-medium text-sm ">
                   <li>
                     High Precision Sensors: The scale uses a high-precision
                     strain gauge sensor system, ensuring accurate weighing
@@ -298,11 +306,11 @@ export default function ProductDetail() {
               )}
             </div>
           </div>
-          <div className="flex items-center mt-2 gap-4">
-            <button className="flex justify-center items-center gap-1 bg-yellow-400 hover:scale-95 transition-all ease-linear duration-200 hover:bg-yellow-600 px-6 py-4 rounded-lg text-white font-bold">
-              Add To Cart <TiShoppingCart className="w-6 h-6" />
+          <div className="flex items-center sm:hidden md:flex  text-xs lg:text-lg mt-2 gap-4">
+            <button className="flex justify-center  items-center gap-1 bg-yellow-400 hover:scale-95 transition-all ease-linear duration-200 hover:bg-yellow-600 px-2 py-2 md:px-6 md:py-4 rounded-lg text-white font-bold">
+              Add To Cart <TiShoppingCart className="w-4 h-4 lg:w-6 lg:h-6" />
             </button>
-            <button className="bg-green-500 px-8 py-4 rounded-lg transition-all ease-linear duration-200 hover:scale-95 hover:bg-green-700 text-white font-bold">
+            <button className="bg-green-500 px-2 py-2 md:px-8 md:py-4 rounded-lg transition-all ease-linear duration-200 hover:scale-95 hover:bg-green-700 text-white font-bold">
               Buy Now
             </button>
           </div>
