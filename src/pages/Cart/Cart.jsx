@@ -4,6 +4,7 @@ import { MdOutlineCurrencyRupee } from "react-icons/md";
 import { useState, useCallback } from "react";
 import { remove } from "@/app/cartSlice";
 
+
 export default function Cart() {
   const products = useSelector((state) => state.cart.info);
   const [quantities, setQuantities] = useState(() =>
@@ -49,8 +50,8 @@ export default function Cart() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8">Your Cart</h1>
+    <div className="container  mx-auto px-4 py-8">
+      <h1 className="text-3xl  font-bold mb-8">Your Cart</h1>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-4">
           {products.map((product, index) => (
@@ -59,11 +60,11 @@ export default function Cart() {
               className="bg-white rounded-lg shadow-md overflow-hidden"
             >
               <div className="flex flex-col sm:flex-row">
-                <div className="w-full sm:w-1/3 h-48 sm:h-auto">
+                <div className="w-full sm:w-1/3 h-48 p-2 sm:h-auto">
                   <img
                     src={product.img || "/placeholder.svg"}
                     alt={product.nameDescription}
-                    className="w-full h-full object-cover"
+                    className="w-full  object-cover"
                   />
                 </div>
                 <div className="flex-1 p-4 flex flex-col justify-between">

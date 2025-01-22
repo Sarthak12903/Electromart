@@ -8,6 +8,7 @@ import {
   SMART,
   TV,
 } from "@/Constants/Contants";
+import { TiTick } from "react-icons/ti";
 import { MdOutlineCurrencyRupee } from "react-icons/md";
 import { FaStar } from "react-icons/fa";
 import { useEffect, useState, useRef } from "react";
@@ -23,7 +24,8 @@ export default function ProductDetail() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [containerRect, setContainerRect] = useState(null);
   const [isCartAnimating, setIsCartAnimating] = useState(false);
-  const cartIconRef = useRef(null);
+
+  const [toggel, setToggle] = useState(false);
 
   const handleMouseMove = (e) => {
     if (!containerRect) return;
@@ -74,12 +76,26 @@ export default function ProductDetail() {
   const AddCart = () => {
     dispatch(add(product));
     setIsCartAnimating(true);
-    setTimeout(() => setIsCartAnimating(false), 1000);
+    setToggle(true);
+    setTimeout(() => {
+      setIsCartAnimating(false);
+      setToggle(false);
+    }, 1000);
   };
 
   return (
     <>
-      <div className="w-[80%] mt-10 rounded-2xl shadow-xl flex-wrap flex-col md:flex-row bg-white mx-auto p-4 flex">
+      <div className="w-[80%] mt-10 rounded-2xl shadow-xl relative flex-wrap flex-col md:flex-row bg-white mx-auto p-4 flex">
+        <div
+          className={`absolute top-0 ${
+            toggel ? "translate-y-3 opacity-100" : "-translate-y-5 opacity-0"
+          } border-slate-400 border shadow-xl w-96 flex transition-all ease-linear duration-200 gap-2 items-center bg-white px-8 py-2 inset-x-[36rem] rounded-lg`}
+        >
+          <div className="bg-green-500 p-2 rounded-full text-white">
+            <TiTick />
+          </div>
+          You Have Added An Item In The Cart
+        </div>
         <div className="flex-[5] flex justify-center items-center sm:m-0 py-10 md:py-20 relative">
           <div className="relative px-4 w-full flex justify-center">
             <img
