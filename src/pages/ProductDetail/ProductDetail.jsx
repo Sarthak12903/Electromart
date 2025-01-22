@@ -61,12 +61,6 @@ export default function ProductDetail() {
     SMART: SMART,
   };
 
-  const AddCart = () => {
-    dispatch(add(product));
-    setIsCartAnimating(true);
-    setTimeout(() => setIsCartAnimating(false), 1000);
-  };
-
   const productList = dataMap[productType];
   const product = productList?.find((value) => value.number === Number(number));
 
@@ -77,6 +71,11 @@ export default function ProductDetail() {
       </div>
     );
   }
+  const AddCart = () => {
+    dispatch(add(product));
+    setIsCartAnimating(true);
+    setTimeout(() => setIsCartAnimating(false), 1000);
+  };
 
   return (
     <>

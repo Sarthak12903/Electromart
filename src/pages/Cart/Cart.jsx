@@ -1,84 +1,153 @@
 import { useDispatch, useSelector } from "react-redux";
 import { FaStar } from "react-icons/fa";
 import { MdOutlineCurrencyRupee } from "react-icons/md";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { remove } from "@/app/cartSlice";
+
 export default function Cart() {
-  const item = useSelector((state) => state.cart.item);
-  const product = useSelector((state) => state.cart.info);
-  const [counter, setCounter] = useState({});
+  const products = useSelector((state) => state.cart.info);
+  const [quantities, setQuantities] = useState(() =>
+    Object.fromEntries(products?.map((_, index) => [index, 1]) || [])
+  );
   const dispatch = useDispatch();
-  const handleDecrease = (id) => {
-    setCounter((prev) => ({
-      ...prev,
-      [id]: Math.max((prev[id] || 1) - 1, 1),
-    }));
+
+  // Convert price string to number (e.g. "67,999" -> 67999)
+  const parsePrice = (priceStr) => {
+    return Number.parseInt(priceStr.replace(/,/g, ""), 10);
   };
-  const handleIncrease = (id) => {
-    setCounter((prev) => ({
+
+  const handleQuantityChange = useCallback((id, change) => {
+    setQuantities((prev) => ({
       ...prev,
-      [id]: Math.min((prev[id] || 1) + 1, 5),
+      [id]: Math.max(1, Math.min((prev[id] || 1) + change, 5)),
     }));
-  };
+  }, []);
+
+  const handleRemove = useCallback(
+    (productName) => {
+      dispatch(remove(productName));
+    },
+    [dispatch]
+  );
+
+  const calculateTotal = useCallback(() => {
+    if (!products) return 0;
+    return products.reduce((total, product, index) => {
+      const price = parsePrice(product.price);
+      return total + price * (quantities[index] || 1);
+    }, 0);
+  }, [products, quantities]);
+
+  if (!products || products.length === 0) {
+    return (
+      <div className="w-full h-[50vh] flex justify-center items-center">
+        <h2 className="text-2xl font-semibold text-gray-600">
+          Your cart is empty
+        </h2>
+      </div>
+    );
+  }
+
   return (
-    <div className="w-[80%] flex p-6 mt-10 gap-10 rounded-lg shadow-xl bg-white">
-      <div className="flex-[6] ">
-        {product &&
-          product.map((value, index) => (
-            <div key={index} className="flex my-10 gap-2">
-              <div className="flex-[5]">
-                <img src={value.img} className=" w-full h-full" />
-              </div>
-              <div className="flex-[7] ">
-                <h1 className="text-lg font-semibold w-[24rem] line-clamp-1">
-                  {value.nameDescription}
-                </h1>
-                <span className="flex text-sm gap-2 items-center text-gray-500 font-semibold ">
-                  <button className="flex gap-1 justify-center items-center text-white text-xs  bg-green-600 lg:px-1 m-1 rounded-sm">
-                    {value.ratingStar || 3.9}
-                    <FaStar fill="white" className="text-white w-3 h-3" />
-                  </button>{" "}
-                  <span>
-                    {value.ratingNumber || "399"} Ratings{"  "}
-                    <span>{`  & ${
-                      value.reviewNumber || "1,088"
-                    } Reviews`}</span>
-                  </span>
-                </span>
-                <div className="flex items-center  gap-3 ">
-                  <h1 className="flex  my-2 items-center text-xl font-bold">
-                    <MdOutlineCurrencyRupee />
-                    {value.price}
-                  </h1>
-                  <div className="w-fit  h-fit flex border-2 border-slate-500">
+    <div className="container mx-auto px-4 py-8">
+      <h1 className="text-3xl font-bold mb-8">Your Cart</h1>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="lg:col-span-2 space-y-4">
+          {products.map((product, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-lg shadow-md overflow-hidden"
+            >
+              <div className="flex flex-col sm:flex-row">
+                <div className="w-full sm:w-1/3 h-48 sm:h-auto">
+                  <img
+                    src={product.img || "/placeholder.svg"}
+                    alt={product.nameDescription}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="flex-1 p-4 flex flex-col justify-between">
+                  <div>
+                    <h2 className="text-xl font-semibold line-clamp-2 mb-2">
+                      {product.nameDescription}
+                    </h2>
+                    <div className="flex items-center text-sm text-gray-600 mb-2">
+                      <span className="bg-green-600 text-white px-2 py-1 rounded-sm flex items-center mr-2">
+                        {product.ratingStar || 3.9} <FaStar className="ml-1" />
+                      </span>
+                      <span>
+                        {product.ratingNumber || "399"} Ratings &{" "}
+                        {product.reviewNumber || "1,088"} Reviews
+                      </span>
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-between mt-4">
+                    <div className="flex items-center">
+                      <span className="text-2xl font-bold flex items-center">
+                        <MdOutlineCurrencyRupee />
+                        {product.price}
+                      </span>
+                      <div className="ml-4 flex items-center border border-gray-300 rounded">
+                        <button
+                          onClick={() => handleQuantityChange(index, -1)}
+                          className="px-3 py-1 hover:bg-gray-100 border-r"
+                        >
+                          -
+                        </button>
+                        <span className="px-4 py-1">
+                          {quantities[index] || 1}
+                        </span>
+                        <button
+                          onClick={() => handleQuantityChange(index, 1)}
+                          className="px-3 py-1 hover:bg-gray-100 border-l"
+                        >
+                          +
+                        </button>
+                      </div>
+                    </div>
                     <button
-                      onClick={() => handleDecrease(index)}
-                      className="border-r-2 border-slate-500 px-2 hover:bg-slate-100 active:scale-95"
+                      onClick={() => handleRemove(product.nameDescription)}
+                      className="mt-2 sm:mt-0 bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded transition-colors"
                     >
-                      {" "}
-                      {"<"}{" "}
-                    </button>
-                    <p className="px-5">{counter[index] || 1}</p>
-                    <button
-                      onClick={() => handleIncrease(index)}
-                      className="border-l-2 border-slate-500 px-2 hover:bg-slate-100 active:scale-95"
-                    >
-                      {" "}
-                      {">"}{" "}
+                      Remove
                     </button>
                   </div>
                 </div>
-                <button
-                  onClick={() => dispatch(remove(value.nameDescription))}
-                  className="w-2/3 py-2 bg-red-500 hover:bg-red-700 active:scale-95 text-white rounded-lg"
-                >
-                  Remove
-                </button>
               </div>
             </div>
           ))}
+        </div>
+        <div className="lg:col-span-1">
+          <div className="bg-white rounded-lg shadow-md p-6 sticky top-4">
+            <h2 className="text-2xl font-semibold mb-4">Order Summary</h2>
+            <div className="space-y-2 mb-4">
+              {products.map((product, index) => (
+                <div key={index} className="flex justify-between">
+                  <span className="line-clamp-1">
+                    {product.nameDescription}
+                  </span>
+                  <span className="flex items-center">
+                    <MdOutlineCurrencyRupee className="inline" />
+                    {parsePrice(product.price) * (quantities[index] || 1)}
+                  </span>
+                </div>
+              ))}
+            </div>
+            <div className="border-t pt-4">
+              <div className="flex justify-between items-center text-xl font-semibold">
+                <span>Total:</span>
+                <span className="flex items-center">
+                  <MdOutlineCurrencyRupee className="inline" />
+                  {calculateTotal().toLocaleString("en-IN")}
+                </span>
+              </div>
+            </div>
+            <button className="w-full mt-6 bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded transition-colors">
+              Proceed to Checkout
+            </button>
+          </div>
+        </div>
       </div>
-      <div className="flex-[6]">asd</div>
     </div>
   );
 }
