@@ -11,6 +11,7 @@ export default function Cart() {
   );
   const dispatch = useDispatch();
 
+  // Convert price string to number (e.g. "67,999" -> 67999)
   const parsePrice = (priceStr) => {
     return Number.parseInt(priceStr.replace(/,/g, ""), 10);
   };
@@ -120,17 +121,19 @@ export default function Cart() {
           <div className="bg-white rounded-lg shadow-md p-6 sticky top-4">
             <h2 className="text-2xl font-semibold mb-4">Order Summary</h2>
             <div className="space-y-2 mb-4">
-              {products.map((product, index) => (
-                <div key={index} className="flex justify-between">
-                  <span className="line-clamp-1">
-                    {product.nameDescription}
-                  </span>
-                  <span className="flex items-center">
-                    <MdOutlineCurrencyRupee className="inline" />
-                    {parsePrice(product.price) * (quantities[index] || 1)}
-                  </span>
-                </div>
-              ))}
+              <ul className="list-disc  space-y-2">
+                {products.map((product, index) => (
+                  <li key={index} className="flex justify-between items-start">
+                    <span className="line-clamp-1 -mt-1 flex-1 pr-4">
+                      {product.nameDescription}
+                    </span>
+                    <span className="flex items-center flex-shrink-0">
+                      <MdOutlineCurrencyRupee className="inline" />
+                      {parsePrice(product.price) * (quantities[index] || 1)}
+                    </span>
+                  </li>
+                ))}
+              </ul>
             </div>
             <div className="border-t pt-4">
               <div className="flex justify-between items-center text-xl font-semibold">
