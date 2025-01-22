@@ -108,7 +108,7 @@ export default function Products({
         "s24",
         "buds3",
       ].includes(productType) && (
-        <div className="lg:flex flex-[10] sm:grid md:grid-cols-3 sm:grid-cols-2 bg-white lg:gap-1 lg:flex-col shadow-md pb-6">
+        <div className="lg:flex flex-[10] sm:grid md:grid-cols-3 sm:grid-cols-2 bg-white lg:gap-1 lg:flex-col rounded-2xl shadow-xl pb-6">
           {filteredProducts.length > 0 ? (
             filteredProducts.map((value) => (
               <Link

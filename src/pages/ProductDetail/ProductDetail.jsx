@@ -10,15 +10,20 @@ import {
 } from "@/Constants/Contants";
 import { MdOutlineCurrencyRupee } from "react-icons/md";
 import { FaStar } from "react-icons/fa";
-import { useState } from "react";
-
+import { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 import { TiShoppingCart } from "react-icons/ti";
+import { useDispatch } from "react-redux";
+import { add } from "@/app/cartSlice";
+
 export default function ProductDetail() {
+  const dispatch = useDispatch();
   const { number, productType } = useParams();
   const [zoom, setZoom] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [containerRect, setContainerRect] = useState(null);
+  const [isCartAnimating, setIsCartAnimating] = useState(false);
+  const cartIconRef = useRef(null);
 
   const handleMouseMove = (e) => {
     if (!containerRect) return;
@@ -44,6 +49,7 @@ export default function ProductDetail() {
     setZoom(false);
     setContainerRect(null);
   };
+
   const dataMap = {
     HOME: HOME,
     TV: TV,
@@ -55,8 +61,13 @@ export default function ProductDetail() {
     SMART: SMART,
   };
 
-  const productList = dataMap[productType];
+  const AddCart = () => {
+    dispatch(add(product));
+    setIsCartAnimating(true);
+    setTimeout(() => setIsCartAnimating(false), 1000);
+  };
 
+  const productList = dataMap[productType];
   const product = productList?.find((value) => value.number === Number(number));
 
   if (!productList || !product) {
@@ -66,15 +77,16 @@ export default function ProductDetail() {
       </div>
     );
   }
+
   return (
     <>
-      <div className="w-[80%] flex-wrap flex-col md:flex-row sm:m-0  bg-white mx-auto p-4 flex">
-        <div className="flex-[5] flex justify-center items-center py-10 md:py-20 relative">
-          <div className="relative w-full flex justify-center">
+      <div className="w-[80%] mt-10 rounded-2xl shadow-xl flex-wrap flex-col md:flex-row bg-white mx-auto p-4 flex">
+        <div className="flex-[5] flex justify-center items-center sm:m-0 py-10 md:py-20 relative">
+          <div className="relative px-4 w-full flex justify-center">
             <img
               src={product.img || "/placeholder.svg"}
-              className={`  cursor-crosshair ${
-                productType === "REFRIGERATOR" ? "w-48 " : "w-full"
+              className={`cursor-crosshair ${
+                productType === "REFRIGERATOR" ? "w-48" : "w-full"
               }`}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
@@ -83,41 +95,40 @@ export default function ProductDetail() {
             />
             {zoom && (
               <div
-                className="hidden lg:block fixed left-2/3 top-20 w-[60rem] h-[80%] rounded-xl shadow-2xl bg-white  "
+                className="hidden lg:block fixed left-2/3 top-20 w-[60rem] h-[80%] rounded-xl shadow-2xl bg-white"
                 style={{
                   backgroundImage: `url(${product.img})`,
                   backgroundSize: "200%",
                   backgroundPosition: `${position.x}% ${position.y}%`,
                   transform: "translateX(-50%)",
                   zIndex: 50,
-
                   border: "1px solid #e5e7eb",
                 }}
               />
             )}
           </div>
         </div>
-        <div className="flex-[7]  flex md:p-10 flex-col ">
-          <h1 className="md:text-2xl w-full sm:text-lg mb-2  sm:line-clamp-2 lg:line-clamp-none font-semibold select-text">
+        <div className="flex-[7] flex md:p-10 flex-col">
+          <h1 className="md:text-2xl w-full sm:text-lg mb-2 sm:line-clamp-2 lg:line-clamp-none font-semibold select-text">
             {product.nameDescription}
           </h1>
           <span className="flex text-sm gap-2 items-center text-gray-500 font-semibold my-2">
-            <button className="flex gap-1 justify-center items-center text-white text-xs  bg-green-600 lg:px-1 m-1 rounded-sm">
-              {product.ratingStar}
+            <button className="flex gap-1 justify-center items-center text-white text-xs bg-green-600 lg:px-1 m-1 rounded-sm">
+              {product.ratingStar || 3.9}
               <FaStar fill="white" className="text-white w-3 h-3" />
             </button>{" "}
             <span>
-              {product.ratingNumber} Ratings{"  "}
-              <span>{`  & ${product.reviewNumber} Reviews`}</span>
+              {product.ratingNumber || "399"} Ratings{"  "}
+              <span>{`  & ${product.reviewNumber || "1,088"} Reviews`}</span>
             </span>
           </span>
           <div className="m-2">
-            <div className=" gap-2">
+            <div className="gap-2">
               <h1 className="flex gap-1 my-2 items-center text-2xl font-bold">
                 <MdOutlineCurrencyRupee />
                 {product.price}
               </h1>
-              <p className="flex gap-1  text-lg text-green-700 font-medium">
+              <p className="flex gap-1 text-lg text-green-700 font-medium">
                 <span className="flex items-center line-through text-black">
                   <MdOutlineCurrencyRupee />
                   {product.originalPrice}
@@ -125,18 +136,29 @@ export default function ProductDetail() {
                 <span>{product.offer}% off</span>
               </p>
             </div>
-            <div className="flex items-center sm:flex md:hidden   text-xs lg:text-lg mt-2 gap-4">
-              <button className="flex justify-center  items-center gap-1 bg-yellow-400 hover:scale-95 transition-all ease-linear duration-200 hover:bg-yellow-600 px-2 py-2 md:px-6 md:py-4 rounded-lg text-white font-bold">
-                Add To Cart <TiShoppingCart className="w-4 h-4 lg:w-6 lg:h-6" />
+            <div className="flex items-center sm:flex md:hidden text-xs lg:text-lg mt-2 gap-4">
+              <button
+                onClick={AddCart}
+                className={`flex justify-center items-center gap-1 px-2 py-2 md:px-6 md:py-4 rounded-lg text-white font-bold transition-all duration-300 ease-in-out ${
+                  isCartAnimating
+                    ? "bg-green-500 scale-105"
+                    : "bg-yellow-400 hover:bg-yellow-600 hover:scale-95"
+                }`}
+                aria-label="Add to cart"
+              >
+                {isCartAnimating ? "Added!" : "Add To Cart"}
+                <TiShoppingCart
+                  className={`w-4 h-4 lg:w-6 lg:h-6 ${
+                    isCartAnimating ? "animate-bounce" : ""
+                  }`}
+                />
               </button>
               <button className="bg-green-500 px-2 py-2 md:px-8 md:py-4 rounded-lg transition-all ease-linear duration-200 hover:scale-95 hover:bg-green-700 text-white font-bold">
                 Buy Now
               </button>
             </div>
             <div>
-              <h1 className="text-xl mt-4 mb-2 font-semibold">
-                Key Features:{" "}
-              </h1>
+              <h1 className="text-xl mt-4 mb-2 font-semibold">Key Features:</h1>
               {productType === "AC" && (
                 <ul className="list-disc  pl-4 leading-8 font-medium  text-sm  ">
                   <li>Annual Power Usage: {product.powerUsage} W</li>
@@ -306,10 +328,25 @@ export default function ProductDetail() {
               )}
             </div>
           </div>
-          <div className="flex items-center sm:hidden md:flex  text-xs lg:text-lg mt-2 gap-4">
-            <button className="flex justify-center  items-center gap-1 bg-yellow-400 hover:scale-95 transition-all ease-linear duration-200 hover:bg-yellow-600 px-2 py-2 md:px-6 md:py-4 rounded-lg text-white font-bold">
-              Add To Cart <TiShoppingCart className="w-4 h-4 lg:w-6 lg:h-6" />
-            </button>
+          <div className="flex items-center sm:hidden md:flex relative text-xs lg:text-lg mt-2 gap-4">
+            <div className="relative">
+              <button
+                onClick={AddCart}
+                className={`flex justify-center items-center gap-1 px-2 py-2 md:px-6 md:py-4 rounded-lg text-white font-bold transition-all duration-300 ease-in-out ${
+                  isCartAnimating
+                    ? "bg-green-500 scale-105"
+                    : "bg-yellow-400 hover:bg-yellow-600 hover:scale-95"
+                }`}
+                aria-label="Add to cart"
+              >
+                {isCartAnimating ? "Added!" : "Add To Cart"}
+                <TiShoppingCart
+                  className={`w-4 h-4 lg:w-6 lg:h-6 ${
+                    isCartAnimating ? "animate-bounce" : ""
+                  }`}
+                />
+              </button>
+            </div>
             <button className="bg-green-500 px-2 py-2 md:px-8 md:py-4 rounded-lg transition-all ease-linear duration-200 hover:scale-95 hover:bg-green-700 text-white font-bold">
               Buy Now
             </button>

@@ -2,7 +2,7 @@ import { GiFallingStar } from "react-icons/gi";
 import { Link } from "react-router-dom";
 export default function Footer() {
   return (
-    <footer className="bg-white w-full p-5 py-16 shadow-md mt-10">
+    <footer className="bg-white w-full p-5 py-16 rounded-2xl shadow-xl mt-10">
       <div className="w-[80%] mx-auto flex flex-col lg:flex-row gap-20   justify-around">
         <div>
           <div className="flex-shrink-0 ">

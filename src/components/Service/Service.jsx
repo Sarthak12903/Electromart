@@ -4,7 +4,7 @@ import { IoMdRefresh } from "react-icons/io";
 import { FaRegCreditCard } from "react-icons/fa";
 export default function Service() {
   return (
-    <div className="flex cursor-default flex-wrap shadow-md lg:flex-row justify-center items-center sm:p-2 md:p-10 mt-10 gap-6 lg:gap-8 bg-white rounded-md border border-slate-200">
+    <div className="flex cursor-default flex-wrap rounded-2xl shadow-xl lg:flex-row justify-center items-center sm:p-2 md:p-10 mt-10 gap-6 lg:gap-8 bg-white  border border-slate-200">
       <div className="flex items-center gap-4 lg:border-r border-slate-200 pr-8 w-72">
         <FaShippingFast className="w-6 h-6 text-blue-500" />
         <div>

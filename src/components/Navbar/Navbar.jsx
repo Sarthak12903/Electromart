@@ -7,11 +7,15 @@ import { GiFallingStar } from "react-icons/gi";
 import { CiBellOn, CiHeadphones } from "react-icons/ci";
 import { AiOutlineStock } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
   const [isSearchVisible, setIsSearchVisible] = useState(false);
+  const navigate = useNavigate();
   const menuRef = useRef(null);
+  const count = useSelector((state) => state.cart.item);
 
   const handleToggle = () => {
     setToggle(!toggle);
@@ -33,9 +37,11 @@ const Navbar = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
-
+  const handleCart = () => {
+    navigate("/cart");
+  };
   return (
-    <nav className="bg-[#324dae] md:px-10 text-white w-full">
+    <nav className="bg-[#324dae] md:px-10  text-white w-full">
       <div className="px-2 sm:px-4 py-2">
         <div className="flex items-center justify-around">
           <Link to={"/"}>
@@ -88,9 +94,17 @@ const Navbar = () => {
 
             <div className="flex lg:-ml-16 sm:ml-0">
               {" "}
-              <button className="p-2 flex items-center hover:bg-white/[0.3] rounded-lg">
+              <button
+                onClick={handleCart}
+                className="p-2 flex items-center relative hover:bg-white/[0.3] rounded-lg"
+              >
                 <FaOpencart className="h-5 w-5" />
                 <span className="hidden md:inline ml-2">Cart</span>
+                {count != 0 && (
+                  <div className="text-[#324dae] rounded-full absolute top-0 right-0 px-2 bg-white">
+                    {count}
+                  </div>
+                )}
               </button>
               <button className="hover:bg-white/[0.3] w-full p-2.5 text-start flex gap-2 items-center  rounded-lg sm:hidden md:flex">
                 <CgProfile className="w-5 h-5" />
