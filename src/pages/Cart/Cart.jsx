@@ -1,11 +1,13 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { FaStar } from "react-icons/fa";
 import { MdOutlineCurrencyRupee } from "react-icons/md";
 import { useState } from "react";
+import { remove } from "@/app/cartSlice";
 export default function Cart() {
   const item = useSelector((state) => state.cart.item);
   const product = useSelector((state) => state.cart.info);
   const [counter, setCounter] = useState({});
+  const dispatch = useDispatch();
   const handleDecrease = (id) => {
     setCounter((prev) => ({
       ...prev,
@@ -66,7 +68,10 @@ export default function Cart() {
                     </button>
                   </div>
                 </div>
-                <button className="w-2/3 py-2 bg-red-500 hover:bg-red-700 active:scale-95 text-white rounded-lg">
+                <button
+                  onClick={() => dispatch(remove(value.nameDescription))}
+                  className="w-2/3 py-2 bg-red-500 hover:bg-red-700 active:scale-95 text-white rounded-lg"
+                >
                   Remove
                 </button>
               </div>

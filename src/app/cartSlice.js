@@ -10,11 +10,21 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     add: (state, action) => {
-      state.item += 1;
-      state.info.push(action.payload);
+      const exists = state.info.find((item) => item.id === action.payload.id);
+
+      if (!exists) {
+        state.item += 1;
+        state.info.push(action.payload);
+      }
+    },
+    remove: (state, action) => {
+      state.item -= 1;
+      state.info = state.info.filter(
+        (value) => value.nameDescription !== action.payload
+      );
     },
   },
 });
 
-export const { add } = cartSlice.actions;
+export const { add, remove } = cartSlice.actions;
 export default cartSlice.reducer;
