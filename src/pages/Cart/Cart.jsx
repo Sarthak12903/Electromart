@@ -11,7 +11,6 @@ export default function Cart() {
   );
   const dispatch = useDispatch();
 
-  // Convert price string to number (e.g. "67,999" -> 67999)
   const parsePrice = (priceStr) => {
     return Number.parseInt(priceStr.replace(/,/g, ""), 10);
   };
