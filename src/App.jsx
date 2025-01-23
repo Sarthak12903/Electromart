@@ -10,6 +10,9 @@ import ProductDetail from "./pages/ProductDetail/ProductDetail";
 import Cart from "./pages/Cart/Cart";
 import { Provider } from "react-redux";
 import { store } from "./app/store/store";
+import Login from "./pages/Login/Login";
+import RegisterLogin from "./components/Forms/RegisterLogin";
+import Register from "./pages/Register/Register";
 const ScrollToTopWrapper = ({ children }) => {
   useScrollToTop();
   return children;
@@ -31,6 +34,8 @@ export default function App() {
                   element={<ProductDetail />}
                 />
                 <Route path="/cart" element={<Cart />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
               </Routes>
               <Footer />
             </ScrollToTopWrapper>

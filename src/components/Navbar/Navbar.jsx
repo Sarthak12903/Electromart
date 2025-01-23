@@ -40,6 +40,10 @@ const Navbar = () => {
   const handleCart = () => {
     navigate("/cart");
   };
+
+  const handleLogin = () => {
+    navigate("/login");
+  };
   return (
     <nav className="bg-[#324dae] md:px-10  text-white w-full">
       <div className="px-2 sm:px-4 py-2">
@@ -92,7 +96,7 @@ const Navbar = () => {
               <IoSearchSharp className="h-5 w-5" />
             </button>
 
-            <div className="flex lg:-ml-16 sm:ml-0">
+            <div className="flex lg:-ml-16 sm:ml-0 lg:gap-2">
               {" "}
               <button
                 onClick={handleCart}
@@ -106,7 +110,10 @@ const Navbar = () => {
                   </div>
                 )}
               </button>
-              <button className="hover:bg-white/[0.3] w-full p-2.5 text-start flex gap-2 items-center  rounded-lg sm:hidden md:flex">
+              <button
+                onClick={handleLogin}
+                className="hover:bg-white/[0.3] w-full p-2.5 text-start flex gap-2 items-center  rounded-lg sm:hidden md:flex"
+              >
                 <CgProfile className="w-5 h-5" />
                 Login
               </button>
@@ -125,7 +132,10 @@ const Navbar = () => {
                 } right-0 top-12 transition-all duration-150 ease-linear bg-white text-gray-700 shadow-xl rounded-lg py-2`}
               >
                 <li className="md:hidden">
-                  <button className="hover:bg-gray-50 w-full p-2.5 text-start flex gap-2 items-center">
+                  <button
+                    onClick={handleLogin}
+                    className="hover:bg-gray-50 w-full p-2.5 text-start flex gap-2 items-center"
+                  >
                     <CgProfile className="w-5 h-5" />
                     Login
                   </button>

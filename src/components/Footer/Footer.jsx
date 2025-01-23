@@ -2,12 +2,12 @@ import { GiFallingStar } from "react-icons/gi";
 import { Link } from "react-router-dom";
 export default function Footer() {
   return (
-    <footer className="bg-white w-full p-5 py-16 rounded-2xl shadow-xl mt-10">
+    <footer className="bg-[#324dae] text-white w-full p-5 py-16 shadow-xl mt-10">
       <div className="w-[80%] mx-auto flex flex-col lg:flex-row gap-20   justify-around">
         <div>
           <div className="flex-shrink-0 ">
             <Link to={"/"}>
-              <h1 className="flex items-center text-lg sm:text-xl text-slate-500 font-semibold gap-1">
+              <h1 className="flex items-center text-lg sm:text-xl text-yellow-400 font-semibold gap-1">
                 <GiFallingStar className=" h-5 w-5" />
                 <span className="inline md:text-2xl sm:text-base">
                   Electromart
@@ -16,9 +16,9 @@ export default function Footer() {
             </Link>
           </div>
         </div>
-        <div>
+        <div className="text-yellow-400">
           <h2 className="font-bold text-2xl mb-7">Shop</h2>
-          <ul className="text-blue-600">
+          <ul className="text-white">
             <li className="cursor-pointer">Hot deals</li>
             <li className="cursor-pointer">Categories</li>
             <li className="cursor-pointer">Brands</li>
@@ -26,9 +26,9 @@ export default function Footer() {
             <li className="cursor-pointer">Weekly deals</li>
           </ul>
         </div>
-        <div>
+        <div className="text-yellow-400">
           <h2 className="font-bold text-2xl mb-7">Need Help?</h2>
-          <ul className="text-blue-600">
+          <ul className="text-white">
             <li className="cursor-pointer">Contact</li>
             <li className="cursor-pointer">Order Tracking</li>
             <li className="cursor-pointer">FAQs</li>
@@ -36,9 +36,9 @@ export default function Footer() {
             <li className="cursor-pointer">Privacy Policy</li>
           </ul>
         </div>
-        <div>
+        <div className="text-yellow-400">
           <h2 className="font-bold text-2xl mb-7">Contact</h2>
-          <ul className="text-blue-600">
+          <ul className="text-white">
             <li className="cursor-pointer">
               Saixxxdanvan Society, Wadgaon xxx, Pune
             </li>
