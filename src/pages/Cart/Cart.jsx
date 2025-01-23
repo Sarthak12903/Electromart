@@ -4,7 +4,6 @@ import { MdOutlineCurrencyRupee } from "react-icons/md";
 import { useState, useCallback } from "react";
 import { remove } from "@/app/cartSlice";
 
-
 export default function Cart() {
   const products = useSelector((state) => state.cart.info);
   const [quantities, setQuantities] = useState(() =>
@@ -12,7 +11,6 @@ export default function Cart() {
   );
   const dispatch = useDispatch();
 
-  // Convert price string to number (e.g. "67,999" -> 67999)
   const parsePrice = (priceStr) => {
     return Number.parseInt(priceStr.replace(/,/g, ""), 10);
   };
@@ -41,7 +39,7 @@ export default function Cart() {
 
   if (!products || products.length === 0) {
     return (
-      <div className="w-full h-[50vh] flex justify-center items-center">
+      <div className="w-full h-[40rem] flex justify-center items-center">
         <h2 className="text-2xl font-semibold text-gray-600">
           Your cart is empty
         </h2>
@@ -50,7 +48,7 @@ export default function Cart() {
   }
 
   return (
-    <div className="container  mx-auto px-4 py-8">
+    <div className="container  mx-auto px-4 py-14">
       <h1 className="text-3xl  font-bold mb-8">Your Cart</h1>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-4">
