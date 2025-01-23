@@ -80,7 +80,7 @@ export default function ProductDetail() {
     setTimeout(() => {
       setIsCartAnimating(false);
       setToggle(false);
-    }, 1000);
+    }, 2000);
   };
 
   return (
