@@ -73,17 +73,13 @@ function Dashboard() {
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
           {images.map((slide) => (
-            <Link
-              key={slide.number}
-              to={`/product?type=${slide.redirect}`}
-              className="w-full flex-shrink-0"
-            >
+            <div key={slide.number} className="w-full flex-shrink-0">
               <img
                 src={slide.path}
                 alt={slide.name}
                 className="h-full sm:w-screen "
               />
-            </Link>
+            </div>
           ))}
         </div>
 
