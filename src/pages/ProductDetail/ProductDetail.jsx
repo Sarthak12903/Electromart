@@ -85,7 +85,7 @@ export default function ProductDetail() {
 
   return (
     <>
-      <div className="lg:w-[80%] mt-10 rounded-2xl shadow-xl relative flex-wrap flex-col md:flex-row bg-white md:mx-auto p-4 flex">
+      <div className="lg:w-[80%] mt-10 overflow-x-hidden rounded-2xl shadow-xl relative flex-wrap flex-col md:flex-row bg-white md:mx-auto p-4 flex">
         <div
           className={`absolute top-0 ${
             toggel ? "translate-y-3 opacity-100" : "-translate-y-5 opacity-0"

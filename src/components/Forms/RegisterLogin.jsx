@@ -50,7 +50,7 @@ export default function RegisterLogin() {
         </Link>
       </div>
       <div>
-        <button className="p-1 my-2 w-full rounded-lg bg-[#324dae] hover:bg-blue-900 active:scale-[0.98] text-white">
+        <button className="py-2 my-2 w-full rounded-lg bg-[#324dae] hover:bg-blue-900 active:scale-[0.98] text-white">
           Create Account
         </button>
       </div>

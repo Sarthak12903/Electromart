@@ -30,7 +30,7 @@ export default function LoginForm() {
         />
       </div>
 
-      <div className="text-xs flex gap-1">
+      <div className="text-sm flex gap-1">
         <p className=" font-semibold text-slate-600">Doesn't have account?</p>
         <Link
           to={"/register"}
@@ -40,7 +40,7 @@ export default function LoginForm() {
         </Link>
       </div>
       <div>
-        <button className="p-1 my-2 w-full rounded-lg bg-[#324dae] hover:bg-blue-900 active:scale-[0.98] text-white">
+        <button className="py-2 mt-10  w-full rounded-lg bg-[#324dae] hover:bg-blue-900 active:scale-[0.98] text-white">
           Login
         </button>
       </div>
