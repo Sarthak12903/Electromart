@@ -85,7 +85,7 @@ export default function ProductDetail() {
 
   return (
     <>
-      <div className="w-[80%] mt-10 rounded-2xl shadow-xl relative flex-wrap flex-col md:flex-row bg-white mx-auto p-4 flex">
+      <div className="w-full md:w-[90%] lg:w-[80%] mt-4 md:mt-10 rounded-2xl shadow-xl relative flex flex-col md:flex-row bg-white mx-auto p-2 md:p-4">
         <div
           className={`absolute top-0 ${
             toggel ? "translate-y-3 opacity-100" : "-translate-y-5 opacity-0"
@@ -96,7 +96,7 @@ export default function ProductDetail() {
           </div>
           You Have Added An Item In The Cart
         </div>
-        <div className="flex-[5] flex justify-center items-center sm:m-0 py-10 md:py-20 relative">
+        <div className="w-full md:flex-[5] flex justify-center items-center py-4 md:py-10 lg:py-20 relative">
           <div className="relative px-4 w-full flex justify-center">
             <img
               src={product.img || "/placeholder.svg"}
@@ -123,8 +123,8 @@ export default function ProductDetail() {
             )}
           </div>
         </div>
-        <div className="flex-[7] flex md:p-10 flex-col">
-          <h1 className="md:text-2xl w-full sm:text-lg mb-2 sm:line-clamp-2 lg:line-clamp-none font-semibold select-text">
+        <div className="w-full md:flex-[7] flex p-4 md:p-10 flex-col">
+          <h1 className="text-xl md:text-2xl w-full mb-2 line-clamp-2 md:line-clamp-none font-semibold select-text">
             {product.nameDescription}
           </h1>
           <span className="flex text-sm gap-2 items-center text-gray-500 font-semibold my-2">
@@ -151,10 +151,10 @@ export default function ProductDetail() {
                 <span>{product.offer}% off</span>
               </p>
             </div>
-            <div className="flex items-center sm:flex md:hidden text-xs lg:text-lg mt-2 gap-4">
+            <div className="flex items-center text-sm md:text-base lg:text-lg mt-4 gap-2 md:gap-4">
               <button
                 onClick={AddCart}
-                className={`flex justify-center items-center gap-1 px-2 py-2 md:px-6 md:py-4 rounded-lg text-white font-bold transition-all duration-300 ease-in-out ${
+                className={`flex-1 md:flex-none flex justify-center items-center gap-1 px-2 py-2 md:px-6 md:py-4 rounded-lg text-white font-bold transition-all duration-300 ease-in-out ${
                   isCartAnimating
                     ? "bg-green-500 scale-105"
                     : "bg-yellow-400 hover:bg-yellow-600 hover:scale-95"
@@ -168,14 +168,14 @@ export default function ProductDetail() {
                   }`}
                 />
               </button>
-              <button className="bg-green-500 px-2 py-2 md:px-8 md:py-4 rounded-lg transition-all ease-linear duration-200 hover:scale-95 hover:bg-green-700 text-white font-bold">
+              <button className="flex-1 md:flex-none bg-green-500 px-2 py-2 md:px-8 md:py-4 rounded-lg transition-all ease-linear duration-200 hover:scale-95 hover:bg-green-700 text-white font-bold">
                 Buy Now
               </button>
             </div>
             <div>
               <h1 className="text-xl mt-4 mb-2 font-semibold">Key Features:</h1>
               {productType === "AC" && (
-                <ul className="list-disc  pl-4 leading-8 font-medium  text-sm  ">
+                <ul className="list-disc pl-4 leading-6 md:leading-8 font-medium text-xs md:text-sm">
                   <li>Annual Power Usage: {product.powerUsage} W</li>
                   <li>Room Size: {product.roomSize}</li>
                   <li>
@@ -193,7 +193,7 @@ export default function ProductDetail() {
                 </ul>
               )}
               {productType === "TV" && (
-                <ul className="list-disc pl-4 leading-8 font-medium  text-sm  ">
+                <ul className="list-disc pl-4 leading-6 md:leading-8 font-medium text-xs md:text-sm">
                   <li>Operating System: {product.operatingSystem} </li>
                   <li> {product.pixels}</li>
                   <li>Launch Year: {product.launch}</li>
@@ -214,7 +214,7 @@ export default function ProductDetail() {
                 </ul>
               )}
               {productType === "Gadgets" && (
-                <ul className="list-disc pl-4 leading-8 font-medium  text-sm  ">
+                <ul className="list-disc pl-4 leading-6 md:leading-8 font-medium text-xs md:text-sm">
                   <li>
                     {product.ram && `${product.ram} RAM |`} {product.rom} ROM
                     {product.expandable &&
@@ -237,7 +237,7 @@ export default function ProductDetail() {
                 </ul>
               )}
               {productType === "HOME" && (
-                <ul className="list-disc pl-4 leading-8 font-medium  text-sm  ">
+                <ul className="list-disc pl-4 leading-6 md:leading-8 font-medium text-xs md:text-sm">
                   <li>{product.rpm} RPM MAX Speed</li>
                   <li>{product.star} Star Rating</li>
                   {product.builtinHeater && <li>With in Built Heater</li>}
@@ -253,7 +253,7 @@ export default function ProductDetail() {
                 </ul>
               )}
               {productType === "PC" && (
-                <ul className="list-disc pl-4 leading-8 font-medium  text-sm ">
+                <ul className="list-disc pl-4 leading-6 md:leading-8 font-medium text-xs md:text-sm">
                   <li>{product.processor}</li>
                   <li>{product.ram}</li>
                   <li>{product.operatingSystem} Operating System</li>
@@ -270,7 +270,7 @@ export default function ProductDetail() {
                 </ul>
               )}
               {productType === "REFRIGERATOR" && (
-                <ul className="list-disc pl-4 leading-8 font-medium text-sm ">
+                <ul className="list-disc pl-4 leading-6 md:leading-8 font-medium text-xs md:text-sm">
                   <li>{product.compressor} Compressor</li>
                   <li>{product.stabilizer}</li>
                   <li>
@@ -284,7 +284,7 @@ export default function ProductDetail() {
                 </ul>
               )}
               {productType === "KITCHEN" && (
-                <ul className="list-disc pl-4 w-[40rem] text-justify leading-8 font-medium text-sm ">
+                <ul className="list-disc pl-4 w-[40rem] text-justify leading-6 md:leading-8 font-medium text-xs md:text-sm">
                   <li>
                     High Precision Sensors: The scale uses a high-precision
                     strain gauge sensor system, ensuring accurate weighing
@@ -312,7 +312,7 @@ export default function ProductDetail() {
                 </ul>
               )}
               {productType === "SMART" && (
-                <ul className="list-disc pl-4 w-[40rem] text-justify leading-8 font-medium text-sm hidden lg:block">
+                <ul className="list-disc pl-4 w-full md:w-[40rem] text-justify leading-6 md:leading-8 font-medium text-xs md:text-sm">
                   <li>
                     Advanced 10-Stage Filtration: Incorporates RO, UV, and
                     Copper technologies to effectively remove impurities and
@@ -342,29 +342,6 @@ export default function ProductDetail() {
                 </ul>
               )}
             </div>
-          </div>
-          <div className="flex items-center sm:hidden md:flex relative text-xs lg:text-lg mt-2 gap-4">
-            <div className="relative">
-              <button
-                onClick={AddCart}
-                className={`flex justify-center items-center gap-1 px-2 py-2 md:px-6 md:py-4 rounded-lg text-white font-bold transition-all duration-300 ease-in-out ${
-                  isCartAnimating
-                    ? "bg-green-500 scale-105"
-                    : "bg-yellow-400 hover:bg-yellow-600 hover:scale-95"
-                }`}
-                aria-label="Add to cart"
-              >
-                {isCartAnimating ? "Added!" : "Add To Cart"}
-                <TiShoppingCart
-                  className={`w-4 h-4 lg:w-6 lg:h-6 ${
-                    isCartAnimating ? "animate-bounce" : ""
-                  }`}
-                />
-              </button>
-            </div>
-            <button className="bg-green-500 px-2 py-2 md:px-8 md:py-4 rounded-lg transition-all ease-linear duration-200 hover:scale-95 hover:bg-green-700 text-white font-bold">
-              Buy Now
-            </button>
           </div>
         </div>
       </div>
